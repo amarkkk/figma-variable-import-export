@@ -393,26 +393,29 @@ function convertToCSV(data) {
   return csvRows.join('\n');
 }
 
-// FIXED: Improved download function for Mac compatibility
+// FIXED: Mac-compatible download function
 function downloadFile(content, filename, mimeType) {
-  const blob = new Blob([content], { type: mimeType });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  a.style.display = 'none';
-  
-  // CRITICAL: Append to body before clicking (required for Mac)
-  document.body.appendChild(a);
-  
-  // Trigger download with proper event
-  a.click();
-  
-  // Clean up after a delay to ensure download starts
-  setTimeout(() => {
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }, 100);
+  try {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.style.display = 'none';
+    
+    // Critical for Mac: Must append to DOM before clicking
+    document.body.appendChild(a);
+    a.click();
+    
+    // Delay cleanup to ensure download starts (especially important on Mac)
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+  } catch (error) {
+    console.error('Download failed:', error);
+    alert('Download failed. Error: ' + error.message);
+  }
 }
 
 window.onmessage = (event) => {
@@ -490,4 +493,5 @@ function renderJSONValidation(v) {
     h += '</ul></div></div>';
   }
   if (v.valid && v.summary) {
-    h += '<div class="validation-
+    h += '<div class="validation-summary"><h3>Import Summary</h3>';
+    h += '<div class="validation-item"><span>Variables to update:</span><strong>' + v.summary.variablesToUpdate + '</strong></div
