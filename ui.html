@@ -393,29 +393,14 @@ function convertToCSV(data) {
   return csvRows.join('\n');
 }
 
-// FIXED: Mac-compatible download function
 function downloadFile(content, filename, mimeType) {
-  try {
-    const blob = new Blob([content], { type: mimeType });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.style.display = 'none';
-    
-    // Critical for Mac: Must append to DOM before clicking
-    document.body.appendChild(a);
-    a.click();
-    
-    // Delay cleanup to ensure download starts (especially important on Mac)
-    setTimeout(() => {
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }, 100);
-  } catch (error) {
-    console.error('Download failed:', error);
-    alert('Download failed. Error: ' + error.message);
-  }
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 window.onmessage = (event) => {
@@ -494,4 +479,47 @@ function renderJSONValidation(v) {
   }
   if (v.valid && v.summary) {
     h += '<div class="validation-summary"><h3>Import Summary</h3>';
-    h += '<div class="validation-item"><span>Variables to update:</span><strong>' + v.summary.variablesToUpdate + '</strong></div
+    h += '<div class="validation-item"><span>Variables to update:</span><strong>' + v.summary.variablesToUpdate + '</strong></div>';
+    h += '<div class="validation-item"><span>Variables not found:</span><strong>' + v.summary.variablesNotFound + '</strong></div>';
+    h += '</div>';
+    if (v.preview?.length > 0) {
+      h += '<h3 style="margin: 16px 0 8px 0; font-size: 14px;">Changes Preview:</h3><div class="preview-list">';
+      v.preview.forEach(item => {
+        h += '<div class="preview-item"><div class="preview-item-header">' + item.collectionName + ' / ' + item.variableName + '</div>';
+        item.changes.forEach(change => h += '<div class="preview-change">• ' + change + '</div>');
+        h += '</div>';
+      });
+      h += '</div>';
+      document.getElementById('import-footer').classList.remove('hidden');
+    }
+  }
+  if (!v.valid) {
+    h += '<div class="alert alert-error">Import validation failed. Please fix the errors above.</div>';
+    h += '<button class="btn" onclick="resetImportState()" style="margin-top: 12px;">Back</button>';
+  }
+  c.innerHTML = h;
+}
+
+function renderImportResults(r, type) {
+  const c = document.getElementById('validation-results');
+  let h = '';
+  if (r.errors?.length > 0) {
+    h += '<div class="alert alert-error"><div style="flex: 1;"><strong>Errors:</strong><ul style="margin: 8px 0 0 20px;">';
+    r.errors.forEach(e => h += '<li>' + e + '</li>');
+    h += '</ul></div></div>';
+  }
+  h += '<div class="alert alert-success"><div style="flex: 1;"><strong>' + type + ' import completed!</strong>';
+  h += '<ul style="margin: 8px 0 0 20px;"><li>Variables updated: ' + r.variablesUpdated + '</li>';
+  h += '<li>Variables skipped: ' + r.variablesSkipped + '</li></ul>';
+  h += '<div style="margin-top: 12px;">Check the "📋 Variable Export/Import Logs" page for detailed logs.</div>';
+  h += '</div></div>';
+  h += '<button class="btn btn-primary" onclick="resetImportState()" style="margin-top: 16px;">Import Another File</button>';
+  c.innerHTML = h;
+  document.getElementById('import-footer').classList.add('hidden');
+  parent.postMessage({ pluginMessage: { type: 'scan-collections' } }, '*');
+}
+
+window.resetImportState = resetImportState;
+</script>
+</body>
+</html>
