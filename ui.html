@@ -493,8 +493,7 @@ window.onmessage = (event) => {
   } else if (msg.type === 'csv-export-ready') {
     downloadCSVSheets(msg.data);
   } else if (msg.type === 'json-export-ready') {
-    downloadFile(msg.data, 'figma-variables-' + new Date().toISOString().split('T')[0] + '.json', 'application/json');
-    alert('JSON export successful!');
+    handleJSONExport(msg.data);
   } else if (msg.type === 'csv-validation-result') {
     renderCSVValidation(msg.validation);
   } else if (msg.type === 'json-validation-result') {
