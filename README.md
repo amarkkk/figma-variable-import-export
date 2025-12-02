@@ -8,44 +8,13 @@ A Figma plugin for exporting variable values to CSV or JSON, enabling external b
 
 Figma doesn't support bulk mathematical operations on variables. This creates friction when building design systems with calculated relationships between values.
 
-### The Problem: Fluid Type Systems and Calculated Values
+**Building fluid type systems:** I use the approach from [Utopia.fyi](https://utopia.fyi)—starting with a base value (e.g., 16px body text) and calculating everything through ratios. With this plugin: export to CSV, use spreadsheet formulas to calculate your entire type scale and line heights from one foundation value, then import back. What takes hours manually takes minutes with formulas.
 
-I build design systems using the approach from [Utopia.fyi](https://utopia.fyi)—starting with a foundation and calculating everything through mathematical relationships: type scales, spacing systems, fluid clamps, and responsive grids.
+**Multi-language content:** Store your site's content in string variables and use modes for different languages. Export to CSV, edit all your copy in a spreadsheet or send it to translators, then import the updated content back. Much easier than editing strings one-by-one in Figma's UI.
 
-**Example: Building a Type Scale from Body Text**
+**The core problem:** Figma makes you calculate and enter each value manually, one at a time, for every mode. With Light/Dark modes and Mobile/Tablet/Desktop viewports, that's 6× the manual work for every change.
 
-Starting from base body text (16px) and scaling up using a ratio (e.g., 1.25 for major third):
-
-```
-Body:     16px (your foundation)
-H4:       16 × 1.25 = 20px
-H3:       20 × 1.25 = 25px
-H2:       25 × 1.25 = 31.25px
-H1:       31.25 × 1.25 = 39.06px
-```
-
-Then line heights calculated from each font size:
-```
-Body line-height:     16 × 1.6 = 25.6px (160%)
-H4 line-height:       20 × 1.4 = 28px (140%)
-H3 line-height:       25 × 1.3 = 32.5px (130%)
-H2 line-height:       31.25 × 1.2 = 37.5px (120%)
-H1 line-height:       39.06 × 1.2 = 46.87px (120%)
-```
-
-**In Figma, you must calculate and enter each value manually, one at a time, for every mode in your collection.** If you have Light and Dark modes, that's double the work. Add Mobile, Tablet, Desktop viewports? Now it's 6× the manual work.
-
-### The Solution: Export → Calculate → Import
-
-1. **Export** your variable structure to CSV
-2. **Calculate** all values using spreadsheet formulas (Excel, Google Sheets, Numbers)
-3. **Import** the calculated values back into Figma
-
-This workflow lets you:
-- Build entire type scales from a single base value
-- Apply mathematical ratios across all variables at once
-- Calculate responsive values using formulas
-- Update your entire system by changing one foundation value
+**The solution:** Export → Calculate in spreadsheets → Import back.
 
 ## What This Plugin Does (and Doesn't Do)
 
