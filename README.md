@@ -1,34 +1,62 @@
 # Variable Import/Export
 
-A Figma plugin for exporting and importing variable values via CSV or JSON. Enables bulk mathematical calculations and external editing of variable values that aren't possible within Figma's native interface.
+A Figma plugin for exporting variable values to CSV or JSON, enabling external bulk calculations and editing workflows that aren't possible within Figma's native interface.
 
 > **⚠️ Development Status**: This plugin is currently in development and not yet published to the Figma Community. Follow the installation instructions below to use it locally.
 
-## Why This Plugin?
+## Use Case
 
 Figma doesn't support bulk mathematical operations on variables. This creates friction when building design systems with calculated relationships between values.
 
-### Common Use Cases
+### The Problem: Fluid Type Systems and Calculated Values
 
-**Type Scales with Mathematical Ratios**
-When creating a typographic scale using ratios (golden ratio, major third, etc.), you need to calculate each size individually. For example:
-- H1: 48px
-- H2: 48 ÷ 1.618 = 29.7px
-- H3: 29.7 ÷ 1.618 = 18.3px
-- H4: 18.3 ÷ 1.618 = 11.3px
+Modern responsive design systems—inspired by tools like [Utopia.fyi](https://utopia.fyi)—rely on mathematical relationships between values. You start with a foundation (body text size, viewport dimensions) and build everything else through calculations: type scales using ratios, spacing systems, fluid clamps, and responsive grids.
 
-Doing this one-by-one in Figma is tedious.
+**Example: Building a Type Scale from Body Text**
 
-**Calculated Line Heights**
-When you want consistent line-height ratios across your type scale:
-- Body text: font-size × 1.6 (160%)
-- Headings: font-size × 1.2 (120%)
-- Display: font-size × 1.4 (140%)
+You want to create a fluid type system starting from your base body text (16px) and scaling up using a ratio (e.g., 1.25 for major third):
 
-Without this plugin, you'd need to calculate and update each variable individually for every mode in your collection.
+```
+Body:     16px (your foundation)
+H4:       16 × 1.25 = 20px
+H3:       20 × 1.25 = 25px
+H2:       25 × 1.25 = 31.25px
+H1:       31.25 × 1.25 = 39.06px
+```
 
-**The Solution**
-Export your variables to CSV, use spreadsheet formulas (Excel, Google Sheets, Numbers) to calculate all values at once, then import them back into Figma.
+Then you need line heights calculated from each font size:
+```
+Body line-height:     16 × 1.6 = 25.6px (160%)
+H4 line-height:       20 × 1.4 = 28px (140%)
+H3 line-height:       25 × 1.3 = 32.5px (130%)
+H2 line-height:       31.25 × 1.2 = 37.5px (120%)
+H1 line-height:       39.06 × 1.2 = 46.87px (120%)
+```
+
+**In Figma, you must calculate and enter each value manually, one at a time, for every mode in your collection.** If you have Light and Dark modes, that's double the work. Add Mobile, Tablet, Desktop viewports? Now it's 6× the manual work.
+
+### The Solution: Export → Calculate → Import
+
+1. **Export** your variable structure to CSV
+2. **Calculate** all values using spreadsheet formulas (Excel, Google Sheets, Numbers)
+3. **Import** the calculated values back into Figma
+
+This workflow lets you:
+- Build entire type scales from a single base value
+- Apply mathematical ratios across all variables at once
+- Calculate responsive values using formulas
+- Update your entire system by changing one foundation value
+- Replicate methodologies from tools like Utopia.fyi directly in Figma
+
+### Beyond Calculations: Other CSV Use Cases
+
+- **Version Control**: Track variable changes in Git—CSVs are diff-friendly
+- **Bulk Editing**: Use find & replace across hundreds of variables
+- **Documentation**: Generate design token documentation automatically
+- **Auditing**: Analyze your system (count colors, find inconsistencies)
+- **Team Review**: Share values in accessible format for non-Figma users
+- **Cross-Tool Workflows**: Convert to other formats (Style Dictionary, design tokens)
+- **Migration**: Prepare data for moving between files or updating legacy systems
 
 ## What This Plugin Does (and Doesn't Do)
 
@@ -111,7 +139,7 @@ The plugin will now appear in your development plugins list.
 3. Use spreadsheet formulas to calculate new values:
    ```
    =B2*1.6      // Calculate line-height as 160% of font size
-   =A2/1.618    // Apply golden ratio
+   =B2*1.25     // Scale up by major third ratio
    =B2+16       // Add consistent spacing
    ```
 4. Export/save as CSV
@@ -135,9 +163,10 @@ The CSV structure looks like this:
 
 ```csv
 collectionId,collectionName,variableId,variableName,variableType,Mode: Light,Mode: Dark
-VariableCollectionId:1:23,Typography,VariableID:4:56,font-size/h1,FLOAT,48,48
-VariableCollectionId:1:23,Typography,VariableID:4:57,font-size/h2,FLOAT,32,32
-VariableCollectionId:1:23,Typography,VariableID:4:58,line-height/h1,FLOAT,57.6,57.6
+VariableCollectionId:1:23,Typography,VariableID:4:56,font-size/body,FLOAT,16,16
+VariableCollectionId:1:23,Typography,VariableID:4:57,font-size/h4,FLOAT,20,20
+VariableCollectionId:1:23,Typography,VariableID:4:58,font-size/h3,FLOAT,25,25
+VariableCollectionId:1:23,Typography,VariableID:4:59,line-height/body,FLOAT,25.6,25.6
 ```
 
 **Key Points:**
