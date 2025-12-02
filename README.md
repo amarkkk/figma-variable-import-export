@@ -8,13 +8,18 @@ A Figma plugin for exporting variable values to CSV or JSON, enabling external b
 
 Figma doesn't support bulk mathematical operations on variables. This creates friction when building design systems with calculated relationships between values.
 
-**Building fluid type systems:** I use the approach from [Utopia.fyi](https://utopia.fyi)—starting with a base value (e.g., 16px body text) and calculating everything through ratios. With this plugin: export to CSV, use spreadsheet formulas to calculate your entire type scale and line heights from one foundation value, then import back. What takes hours manually takes minutes with formulas.
+### Examples
 
-**Multi-language content:** Store your site's content in string variables and use modes for different languages. Export to CSV, edit all your copy in a spreadsheet or send it to translators, then import the updated content back. Much easier than editing strings one-by-one in Figma's UI.
+#### Adjusting fluid values:
 
-**The core problem:** Figma makes you calculate and enter each value manually, one at a time, for every mode. With Light/Dark modes and Mobile/Tablet/Desktop viewports, that's 6× the manual work for every change.
+Sometimes, I like use the approach from [Utopia.fyi](https://utopia.fyi) - starting with a base value (e.g., 16px body text) and calculating everything through ratios. With this plugin: export to CSV, use spreadsheet formulas to calculate your entire type scale and line heights from one foundation value, then import back.
 
-**The solution:** Export → Calculate in spreadsheets → Import back.
+**The core problem**: Figma makes you calculate and enter each value manually, one at a time, for every mode. With Mobile/Tablet/Laptop/Desktop viewports, that's 4× the manual work for every change.
+
+**The solution**: Create placeholder values in Figma → Export → Calculate in spreadsheets → Import back.
+
+#### Multi-language content:
+Store your site's content in string variables and use modes for different languages. Export to CSV, edit all your copy in a spreadsheet or send it to translators, then import the updated content back. Much easier than editing strings one-by-one in Figma's UI.
 
 ## What This Plugin Does (and Doesn't Do)
 
