@@ -48,12 +48,12 @@ Store your site's content in string variables and use modes for different langua
 
 ## Screenshots
 
-<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 47 49" src="https://github.com/user-attachments/assets/553d9b46-0718-4732-b5c8-2f741879bab2" />
-<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 43 24" src="https://github.com/user-attachments/assets/c53aa8e8-3425-41fd-a6f3-e8e50e15561d" />
 <img width="922" height="708" alt="Screenshot 2025-12-02 at 13 31 53" src="https://github.com/user-attachments/assets/5c0fadaf-e3b2-4fb3-8ff4-8d5ccdb0955f" />
-<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 31 35" src="https://github.com/user-attachments/assets/a240ee14-ff85-4307-ad52-db569676e6d9" />
-<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 31 27" src="https://github.com/user-attachments/assets/3701d5f8-31ba-4dab-a91e-4ad0b9d777a9" />
 <img width="922" height="708" alt="Screenshot 2025-12-02 at 13 26 33" src="https://github.com/user-attachments/assets/90ab85fc-313d-46af-95c1-8e95455ba601" />
+<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 31 27" src="https://github.com/user-attachments/assets/3701d5f8-31ba-4dab-a91e-4ad0b9d777a9" />
+<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 31 35" src="https://github.com/user-attachments/assets/a240ee14-ff85-4307-ad52-db569676e6d9" />
+<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 43 24" src="https://github.com/user-attachments/assets/c53aa8e8-3425-41fd-a6f3-e8e50e15561d" />
+<img width="922" height="708" alt="Screenshot 2025-12-02 at 13 47 49" src="https://github.com/user-attachments/assets/553d9b46-0718-4732-b5c8-2f741879bab2" />
 
 ## Installation
 
