@@ -10,11 +10,11 @@ Figma doesn't support bulk mathematical operations on variables. This creates fr
 
 ### The Problem: Fluid Type Systems and Calculated Values
 
-Modern responsive design systems—inspired by tools like [Utopia.fyi](https://utopia.fyi)—rely on mathematical relationships between values. You start with a foundation (body text size, viewport dimensions) and build everything else through calculations: type scales using ratios, spacing systems, fluid clamps, and responsive grids.
+I build design systems using the approach from [Utopia.fyi](https://utopia.fyi)—starting with a foundation and calculating everything through mathematical relationships: type scales, spacing systems, fluid clamps, and responsive grids.
 
 **Example: Building a Type Scale from Body Text**
 
-You want to create a fluid type system starting from your base body text (16px) and scaling up using a ratio (e.g., 1.25 for major third):
+Starting from base body text (16px) and scaling up using a ratio (e.g., 1.25 for major third):
 
 ```
 Body:     16px (your foundation)
@@ -24,7 +24,7 @@ H2:       25 × 1.25 = 31.25px
 H1:       31.25 × 1.25 = 39.06px
 ```
 
-Then you need line heights calculated from each font size:
+Then line heights calculated from each font size:
 ```
 Body line-height:     16 × 1.6 = 25.6px (160%)
 H4 line-height:       20 × 1.4 = 28px (140%)
@@ -46,17 +46,6 @@ This workflow lets you:
 - Apply mathematical ratios across all variables at once
 - Calculate responsive values using formulas
 - Update your entire system by changing one foundation value
-- Replicate methodologies from tools like Utopia.fyi directly in Figma
-
-### Beyond Calculations: Other CSV Use Cases
-
-- **Version Control**: Track variable changes in Git—CSVs are diff-friendly
-- **Bulk Editing**: Use find & replace across hundreds of variables
-- **Documentation**: Generate design token documentation automatically
-- **Auditing**: Analyze your system (count colors, find inconsistencies)
-- **Team Review**: Share values in accessible format for non-Figma users
-- **Cross-Tool Workflows**: Convert to other formats (Style Dictionary, design tokens)
-- **Migration**: Prepare data for moving between files or updating legacy systems
 
 ## What This Plugin Does (and Doesn't Do)
 
@@ -175,6 +164,8 @@ VariableCollectionId:1:23,Typography,VariableID:4:59,line-height/body,FLOAT,25.6
 - Color values use hex format (#RRGGBB)
 - Number values are plain decimals
 - Aliases appear as `[ALIAS]` and cannot be edited
+
+**Note:** The CSV includes metadata columns (collectionId, collectionName, variableType) that shouldn't be edited but are necessary for the plugin to work correctly. Only edit the mode value columns.
 
 ### Tips
 
