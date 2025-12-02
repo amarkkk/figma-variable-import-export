@@ -23,11 +23,10 @@ Figma doesn't support bulk mathematical operations on variables. This creates fr
 - Import updated values for existing variables
 - Support multi-mode variables (all modes export to separate columns)
 - Preserve variable IDs for reliable re-importing
-- Create operation logs on a dedicated page
+- Create operation logs on a dedicated page (basic implementation, needs improvement)
 
-❌ **Doesn't (currently):**
+❌ **Doesn't:**
 - Create new variables from scratch
-- Migrate variables to empty files
 - Handle variable aliases (they're skipped during export)
 - Support remote/library variables (only local variables)
 
