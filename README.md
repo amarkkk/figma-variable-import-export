@@ -185,6 +185,7 @@ The TypeScript compiler watches for changes and automatically recompiles.
 - [ ] Direct Google Sheets synchronization (currently falls back to CSV export/import)
 - [ ] Improved UX: better variable selection, collapsible collections, sorting/ordering
 - [ ] Resizable plugin window
+- [ ] Fix font loading for text variable updates
 
 ## Known Limitations
 
@@ -193,6 +194,7 @@ The TypeScript compiler watches for changes and automatically recompiles.
 - **Remote variables aren't supported**: Only local variables can be exported/imported
 - **Existing variables only**: Can't create new variables from CSV
 - **Mode structure must match**: Import file must have the same modes as your current collections
+- **Font loading errors**: If you update a number variable (like font size) that's applied to text using a custom font, the import may fail with "unloaded font" errors. This is a Figma API quirk—even though you're only changing a number, Figma requires the font to be loaded first. Workaround: Make sure all fonts used in your document are loaded/active before importing.
 
 **UX Needs Improvement:**
 The core export/import functionality works, but the user experience has rough edges:
