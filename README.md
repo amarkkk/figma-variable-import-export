@@ -181,12 +181,7 @@ The TypeScript compiler watches for changes and automatically recompiles.
 ## Roadmap
 
 - [ ] Publish to Figma Community
-- [ ] Support for creating new variables from CSV
 - [ ] Variable alias handling during export/import
-- [ ] Bulk operations (rename, retype, rescope)
-- [ ] Template library for common calculations (type scales, spacing systems)
-- [ ] Direct formula evaluation (calculate within the plugin)
-- [ ] Support for remote/library variables
 
 ## Known Limitations
 
