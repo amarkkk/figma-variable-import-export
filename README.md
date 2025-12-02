@@ -182,13 +182,25 @@ The TypeScript compiler watches for changes and automatically recompiles.
 
 - [ ] Publish to Figma Community
 - [ ] Variable alias handling during export/import
+- [ ] Direct Google Sheets synchronization (currently falls back to CSV export/import)
+- [ ] Improved UX: better variable selection, collapsible collections, sorting/ordering
+- [ ] Resizable plugin window
 
 ## Known Limitations
 
+**Core Functionality:**
 - **Alias variables are skipped**: Variables that reference other variables aren't exported
 - **Remote variables aren't supported**: Only local variables can be exported/imported
-- **Existing variables only**: Can't create new variables from CSV (yet)
+- **Existing variables only**: Can't create new variables from CSV
 - **Mode structure must match**: Import file must have the same modes as your current collections
+
+**UX Needs Improvement:**
+The core export/import functionality works, but the user experience has rough edges:
+- Variable selection interface could be more intuitive
+- Collection expand/collapse behavior is inconsistent
+- No sorting or filtering options
+- Window is fixed size (not resizable)
+- Google Sheets direct sync was attempted but currently not implemented—use CSV export/import workflow instead
 
 ## Contributing
 
