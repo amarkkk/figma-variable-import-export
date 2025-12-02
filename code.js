@@ -260,7 +260,7 @@ function handleValidateCSVImport(csvData) {
                     const currentValue = variable.valuesByMode[mode.modeId];
                     const currentFormatted = formatValueForCSV(currentValue, variable.resolvedType);
                     if (newValue !== currentFormatted && newValue !== '[ALIAS]') {
-                        changes.push(modeName + ': ' + currentFormatted + ' â†’ ' + newValue);
+                        changes.push(modeName + ': ' + currentFormatted + ' → ’ ' + newValue);
                     }
                 }
                 if (changes.length > 0) {
