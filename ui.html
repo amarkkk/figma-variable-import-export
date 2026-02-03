@@ -4,69 +4,185 @@
 <meta charset="utf-8">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; background: #fff; color: #000; overflow: hidden; }
+
+:root {
+  /* Light theme (Figma native colors) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #f9f9f9;
+  --bg-hover: #ebebeb;
+  --bg-active: #e5e5e5;
+
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-tertiary: #666666;
+  --text-disabled: #999999;
+
+  --border-strong: #ccc;
+  --border-medium: #e5e5e5;
+  --border-subtle: #f0f0f0;
+
+  --accent-primary: #0d99ff;
+  --accent-hover: #0b7fd9;
+  --accent-active: #0a6ec2;
+
+  --success-bg: #d4edda;
+  --success-text: #155724;
+  --success-border: #28a745;
+
+  --warning-bg: #fff3cd;
+  --warning-text: #856404;
+  --warning-border: #ffc107;
+
+  --error-bg: #f8d7da;
+  --error-text: #721c24;
+  --error-border: #dc3545;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+  /* Dark theme (Figma native colors) */
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #2c2c2c;
+  --bg-tertiary: #252525;
+  --bg-hover: #383838;
+  --bg-active: #444444;
+
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+  --text-tertiary: #b3b3b3;
+  --text-disabled: #7a7a7a;
+
+  --border-strong: #5a5a5a;
+  --border-medium: #3c3c3c;
+  --border-subtle: #2c2c2c;
+
+  --accent-primary: #18a0fb;
+  --accent-hover: #3db0ff;
+  --accent-active: #0d8ce8;
+
+  --success-bg: #1a3d28;
+  --success-text: #4ade80;
+  --success-border: #2d5a3d;
+
+  --warning-bg: #3d3520;
+  --warning-text: #fbbf24;
+  --warning-border: #92752d;
+
+  --error-bg: #3d1a1a;
+  --error-text: #f87171;
+  --error-border: #5a2d2d;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; background: var(--bg-primary); color: var(--text-primary); overflow: hidden; transition: background-color 0.2s, color 0.2s; }
 .container { height: 100vh; display: flex; flex-direction: column; }
-.tabs { display: flex; border-bottom: 1px solid #e5e5e5; background: #f5f5f5; }
-.tab { padding: 12px 24px; cursor: pointer; border: none; background: transparent; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; transition: all 0.2s; }
-.tab:hover { color: #000; background: #ebebeb; }
-.tab.active { color: #000; border-bottom-color: #0d99ff; background: #fff; }
+.tabs { display: flex; border-bottom: 1px solid var(--border-medium); background: var(--bg-secondary); }
+.tab { padding: 12px 24px; cursor: pointer; border: none; background: transparent; font-size: 13px; font-weight: 500; color: var(--text-tertiary); border-bottom: 2px solid transparent; transition: all 0.2s; }
+.tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+.tab.active { color: var(--text-primary); border-bottom-color: var(--accent-primary); background: var(--bg-primary); }
 .tab-content { flex: 1; display: none; flex-direction: column; overflow: hidden; }
 .tab-content.active { display: flex; }
-.toolbar { padding: 12px 16px; background: #f9f9f9; border-bottom: 1px solid #e5e5e5; display: flex; gap: 8px; align-items: center; }
-.search-box { flex: 1; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; }
-.btn { padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
-.btn:hover { background: #f5f5f5; }
-.btn-primary { background: #0d99ff; color: white; border-color: #0d99ff; }
-.btn-primary:hover { background: #0b7fd9; }
+.toolbar { padding: 12px 16px; background: var(--bg-tertiary); border-bottom: 1px solid var(--border-medium); display: flex; gap: 8px; align-items: center; }
+.search-box { flex: 1; padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 4px; font-size: 12px; background: var(--bg-primary); color: var(--text-primary); transition: all 0.2s; }
+.search-box:focus { outline: none; border-color: var(--accent-primary); }
+.btn { padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary); cursor: pointer; font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+.btn:hover { background: var(--bg-secondary); }
+.btn-primary { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+.btn-primary:hover { background: var(--accent-hover); }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-success { background: #28a745; color: white; border-color: #28a745; }
+.btn-success { background: var(--success-border); color: white; border-color: var(--success-border); }
 .btn-success:hover { background: #218838; }
-.table-container { flex: 1; overflow-y: auto; border-bottom: 1px solid #e5e5e5; }
-.collection-group { border-bottom: 1px solid #e5e5e5; }
-.collection-header { padding: 12px 16px; background: #f5f5f5; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
-.collection-header:hover { background: #ebebeb; }
-.variable-row { padding: 10px 16px 10px 40px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.1s; }
-.variable-row:hover { background: #f9f9f9; }
+.table-container { flex: 1; overflow-y: auto; border-bottom: 1px solid var(--border-medium); }
+.collection-group { border-bottom: 1px solid var(--border-medium); }
+.collection-header { padding: 12px 16px; background: var(--bg-secondary); font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; color: var(--text-primary); }
+.collection-header:hover { background: var(--bg-hover); }
+.collection-header span { color: var(--text-primary); }
+.collection-counts { color: var(--text-tertiary) !important; font-size: 11px; }
+.variable-row { padding: 10px 16px 10px 40px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.1s; }
+.variable-row:hover { background: var(--bg-tertiary); }
 .variable-row.selected { background: #e3f2ff; }
+[data-theme="dark"] .variable-row.selected { background: #1a3d4d; }
 .variable-row.alias { opacity: 0.5; pointer-events: none; }
 .checkbox { width: 16px; height: 16px; cursor: pointer; }
 .variable-info { flex: 1; min-width: 0; }
-.variable-name { font-weight: 500; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
-.badge { padding: 2px 6px; background: #ffc107; border-radius: 3px; font-size: 9px; font-weight: 600; }
-.variable-desc { color: #666; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.variable-type { padding: 2px 8px; background: #e5e5e5; border-radius: 3px; font-size: 10px; font-weight: 500; color: #666; }
-.footer { padding: 12px 16px; background: #f9f9f9; border-top: 1px solid #e5e5e5; display: flex; justify-content: space-between; align-items: center; }
-.selection-info { color: #666; font-size: 12px; }
+.variable-name { font-weight: 500; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; color: var(--text-primary); }
+.badge { padding: 2px 6px; background: var(--warning-border); color: var(--text-primary); border-radius: 3px; font-size: 9px; font-weight: 600; }
+.variable-desc { color: var(--text-tertiary); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.variable-type { padding: 2px 8px; background: var(--bg-active); border-radius: 3px; font-size: 10px; font-weight: 500; color: var(--text-tertiary); }
+.footer { padding: 12px 16px; background: var(--bg-tertiary); border-top: 1px solid var(--border-medium); display: flex; justify-content: space-between; align-items: center; }
+.selection-info { color: var(--text-tertiary); font-size: 12px; }
 .export-buttons { display: flex; gap: 8px; }
-.helper-text { color: #666; font-size: 11px; margin-top: 8px; padding: 8px 12px; background: #f0f9ff; border-left: 3px solid #0d99ff; border-radius: 3px; line-height: 1.5; }
+.helper-text { color: var(--text-tertiary); font-size: 11px; padding: 8px 12px; background: #f0f9ff; border-left: 3px solid var(--accent-primary); border-radius: 3px; line-height: 1.5; }
+[data-theme="dark"] .helper-text { background: #1a2e3d; }
+.workaround-banner { background: var(--warning-bg); border-left-color: var(--warning-border); color: var(--warning-text); padding: 12px; }
+.future-feature-box { border-color: var(--border-strong) !important; }
 .import-container { flex: 1; display: flex; flex-direction: column; padding: 16px; gap: 16px; overflow-y: auto; }
-.import-method { border: 2px solid #e5e5e5; border-radius: 8px; padding: 20px; transition: all 0.2s; }
+.import-method { border: 2px solid var(--border-medium); border-radius: 8px; padding: 20px; transition: all 0.2s; background: var(--bg-primary); }
 .import-method.clickable { cursor: pointer; }
-.import-method.clickable:hover { border-color: #0d99ff; background: #f9fcff; }
-.import-method h3 { font-size: 14px; margin-bottom: 8px; }
-.import-method p { color: #666; font-size: 11px; line-height: 1.5; margin-bottom: 12px; }
-.file-upload { border: 2px dashed #ccc; border-radius: 8px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.2s; margin-top: 12px; }
-.file-upload:hover { border-color: #0d99ff; background: #f9fcff; }
-.file-upload.drag-over { border-color: #0d99ff; background: #e3f2ff; }
+.import-method.clickable:hover { border-color: var(--accent-primary); background: #f9fcff; }
+[data-theme="dark"] .import-method.clickable:hover { background: #1a2e3d; }
+.import-method h3 { font-size: 14px; margin-bottom: 8px; color: var(--text-primary); }
+.import-method p { color: var(--text-tertiary); font-size: 11px; line-height: 1.5; margin-bottom: 12px; }
+.file-upload { border: 2px dashed var(--border-strong); border-radius: 8px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.2s; margin-top: 12px; background: var(--bg-primary); color: var(--text-primary); }
+.file-upload:hover { border-color: var(--accent-primary); background: #f9fcff; }
+[data-theme="dark"] .file-upload:hover { background: #1a2e3d; }
+.file-upload.drag-over { border-color: var(--accent-primary); background: #e3f2ff; }
+[data-theme="dark"] .file-upload.drag-over { background: #1a3d4d; }
 .alert { padding: 12px; border-radius: 6px; margin-bottom: 12px; display: flex; gap: 8px; }
-.alert-warning { background: #fff3cd; border: 1px solid #ffc107; color: #856404; }
-.alert-error { background: #f8d7da; border: 1px solid #dc3545; color: #721c24; }
-.alert-success { background: #d4edda; border: 1px solid #28a745; color: #155724; }
-.validation-summary { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
-.validation-summary h3 { margin-bottom: 12px; font-size: 14px; }
-.validation-item { padding: 8px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0; }
+.alert-warning { background: var(--warning-bg); border: 1px solid var(--warning-border); color: var(--warning-text); }
+.alert-error { background: var(--error-bg); border: 1px solid var(--error-border); color: var(--error-text); }
+.alert-success { background: var(--success-bg); border: 1px solid var(--success-border); color: var(--success-text); }
+.validation-summary { background: var(--bg-tertiary); border: 1px solid var(--border-medium); border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+.validation-summary h3 { margin-bottom: 12px; font-size: 14px; color: var(--text-primary); }
+.validation-item { padding: 8px 0; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
 .validation-item:last-child { border-bottom: none; }
-.preview-list { max-height: 300px; overflow-y: auto; background: #fff; border: 1px solid #e5e5e5; border-radius: 6px; padding: 12px; }
-.preview-item { padding: 8px; margin-bottom: 8px; background: #f9f9f9; border-left: 3px solid #0d99ff; border-radius: 3px; }
-.preview-item-header { font-weight: 600; margin-bottom: 4px; font-size: 12px; }
-.preview-change { font-size: 11px; color: #666; margin-left: 12px; margin-top: 2px; }
+.preview-list { max-height: 300px; overflow-y: auto; background: var(--bg-primary); border: 1px solid var(--border-medium); border-radius: 6px; padding: 12px; }
+.preview-item { padding: 8px; margin-bottom: 8px; background: var(--bg-tertiary); border-left: 3px solid var(--accent-primary); border-radius: 3px; }
+.preview-item-header { font-weight: 600; margin-bottom: 4px; font-size: 12px; color: var(--text-primary); }
+.preview-change { font-size: 11px; color: var(--text-tertiary); margin-left: 12px; margin-top: 2px; }
 .hidden { display: none; }
-.loading { text-align: center; padding: 32px; color: #666; }
-.future-badge { position: absolute; top: 10px; right: 10px; background: #ffc107; color: #000; padding: 4px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+.loading { text-align: center; padding: 32px; color: var(--text-tertiary); }
+.future-badge { position: absolute; top: 10px; right: 10px; background: var(--warning-border); color: #000; padding: 4px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+
+/* Icon button for theme toggle */
+.icon-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  transition: all 0.15s ease;
+}
+
+.icon-button:hover {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.icon-button:active {
+  background: var(--bg-active);
+}
 </style>
 </head>
 <body>
 <div class="container">
+<!-- Helper Text - Moved above tabs -->
+<div class="helper-text" style="margin: 12px 16px 0 16px;">
+💡 <strong>Google Sheets Workflow:</strong> Import CSVs to Google Sheets (each as a separate tab), edit values, then download and re-upload to sync. CSV files are named after collections for easy organization.
+</div>
+
 <div class="tabs">
 <button class="tab active" data-tab="export">Export Variables</button>
 <button class="tab" data-tab="import">Import Variables</button>
@@ -76,17 +192,24 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 <div class="tab-content active" id="export-tab">
 <div class="toolbar">
 <input type="text" class="search-box" placeholder="Search variables..." id="search-export">
+<button class="btn" id="expand-all-btn">Expand All</button>
+<button class="btn" id="collapse-all-btn">Collapse All</button>
 <button class="btn" id="select-all-btn">Select All</button>
 <button class="btn" id="deselect-all-btn">Deselect All</button>
 <button class="btn" id="refresh-btn">Refresh</button>
 </div>
 <div class="table-container" id="variables-list"><div class="loading">Loading variables...</div></div>
 <div class="footer">
+<button id="theme-toggle" class="icon-button" title="Toggle theme" style="margin-right: 8px;">
+<svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+<path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+</svg>
+<svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" style="display: none;">
+<path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path>
+</svg>
+</button>
 <div style="flex: 1;">
 <div class="selection-info" id="selection-info">0 variables selected (0 foundational)</div>
-<div class="helper-text">
-💡 <strong>Google Sheets Workflow:</strong> Import CSVs to Google Sheets (each as a separate tab), edit values, then download and re-upload to sync. CSV files are named after collections for easy organization.
-</div>
 </div>
 <div class="export-buttons">
 <button class="btn btn-success" id="export-csv-btn" disabled>📊 Export to CSV</button>
@@ -124,15 +247,15 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 </div>
 
 <!-- Future Feature: Google Sheets -->
-<div class="import-method" style="margin-top: 24px; opacity: 0.6; position: relative; border-color: #999;">
+<div class="import-method future-feature-box" style="margin-top: 24px; opacity: 0.6; position: relative;">
 <div class="future-badge">FUTURE FEATURE</div>
 <h3>🔗 Direct Google Sheets Sync</h3>
 <p>We explored auto-syncing from Google Sheets URLs, but Google's CORS policies currently prevent this from working in Figma plugins.</p>
-<input type="text" placeholder="https://docs.google.com/spreadsheets/d/..." disabled style="width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; margin-bottom: 8px; background: #f5f5f5; cursor: not-allowed; color: #999;">
+<input type="text" placeholder="https://docs.google.com/spreadsheets/d/..." disabled style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-strong); border-radius: 4px; font-size: 12px; margin-bottom: 8px; background: var(--bg-secondary); cursor: not-allowed; color: var(--text-disabled);">
 <button class="btn" disabled style="cursor: not-allowed; opacity: 0.5; width: 100%;">Sync from URL (Not Available)</button>
-<div class="helper-text" style="margin-top: 12px; background: #fff3cd; border-left-color: #ffc107;">
+<div class="helper-text workaround-banner" style="margin-top: 12px;">
 💡 <strong>Have a workaround idea?</strong> We'd love to make this work! If you have suggestions for implementing direct Google Sheets sync, please reach out:<br>
-<a href="https://github.com/yourusername/variable-import-export/issues" target="_blank" style="color: #0d99ff; text-decoration: none;">Open a GitHub issue</a> or email us with your ideas.
+<a href="https://github.com/yourusername/variable-import-export/issues" target="_blank" style="color: var(--accent-primary); text-decoration: none;">Open a GitHub issue</a> or email us with your ideas.
 </div>
 </div>
 </div>
@@ -142,7 +265,14 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 
 <!-- Import Footer -->
 <div class="footer hidden" id="import-footer" style="margin-top: auto;">
-<div></div>
+<button id="theme-toggle-import" class="icon-button" title="Toggle theme" style="margin-right: auto;">
+<svg class="sun-icon-import" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+<path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+</svg>
+<svg class="moon-icon-import" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" style="display: none;">
+<path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56A104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path>
+</svg>
+</button>
 <div style="display: flex; gap: 8px;">
 <button class="btn" id="cancel-import-btn">Cancel</button>
 <button class="btn btn-primary" id="confirm-import-btn">Confirm Import</button>
@@ -152,11 +282,106 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 </div>
 </div>
 
+<!-- Resize Handle -->
+<svg
+id="resize-corner"
+xmlns="http://www.w3.org/2000/svg"
+width="16"
+height="16"
+fill="currentColor"
+viewBox="0 0 256 256"
+style="position: absolute; right: 4px; bottom: 4px; cursor: nwse-resize; z-index: 10000; opacity: 0.4; color: var(--text-tertiary);">
+<path d="M213.66,133.66l-80,80a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,11.32Zm-16-99.32a8,8,0,0,0-11.32,0l-152,152a8,8,0,0,0,11.32,11.32l152-152A8,8,0,0,0,197.66,34.34Z"></path>
+</svg>
+
 <script>
 let collections = [];
 let selectedVariables = new Set();
 let importData = null;
 let importType = null;
+let currentTheme = 'light';
+
+// Theme management
+function setTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+  const sunIconImport = document.querySelector('.sun-icon-import');
+  const moonIconImport = document.querySelector('.moon-icon-import');
+
+  if (theme === 'dark') {
+    if (sunIcon) sunIcon.style.display = 'none';
+    if (moonIcon) moonIcon.style.display = 'block';
+    if (sunIconImport) sunIconImport.style.display = 'none';
+    if (moonIconImport) moonIconImport.style.display = 'block';
+  } else {
+    if (sunIcon) sunIcon.style.display = 'block';
+    if (moonIcon) moonIcon.style.display = 'none';
+    if (sunIconImport) sunIconImport.style.display = 'block';
+    if (moonIconImport) moonIconImport.style.display = 'none';
+  }
+
+  // Save theme preference
+  parent.postMessage({
+    pluginMessage: {
+      type: 'theme-change',
+      theme: theme
+    }
+  }, '*');
+}
+
+function toggleTheme() {
+  setTheme(currentTheme === 'light' ? 'dark' : 'light');
+}
+
+// Resize functionality
+function setupResizeHandle() {
+  const corner = document.getElementById('resize-corner');
+  if (!corner) return;
+
+  const resizeWindow = (e) => {
+    const size = {
+      w: Math.max(600, Math.floor(e.clientX + 5)),
+      h: Math.max(400, Math.floor(e.clientY + 5))
+    };
+    parent.postMessage({
+      pluginMessage: {
+        type: 'resize',
+        size: size
+      }
+    }, '*');
+  };
+
+  const handlePointerDown = (e) => {
+    corner.onpointermove = resizeWindow;
+    corner.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerUp = (e) => {
+    corner.onpointermove = null;
+    corner.releasePointerCapture(e.pointerId);
+  };
+
+  corner.addEventListener('pointerdown', handlePointerDown);
+  corner.addEventListener('pointerup', handlePointerUp);
+}
+
+// Initialize theme toggle and resize
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleImport = document.getElementById('theme-toggle-import');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+  if (themeToggleImport) {
+    themeToggleImport.addEventListener('click', toggleTheme);
+  }
+
+  setupResizeHandle();
+});
 
 // Tab switching
 document.querySelectorAll('.tab').forEach(tab => {
@@ -189,6 +414,18 @@ document.getElementById('deselect-all-btn').addEventListener('click', () => {
   selectedVariables.clear();
   renderVariablesList();
   updateSelectionInfo();
+});
+
+document.getElementById('expand-all-btn').addEventListener('click', () => {
+  collapsedCollections.clear();
+  const searchTerm = document.getElementById('search-export').value.toLowerCase();
+  renderVariablesList(searchTerm);
+});
+
+document.getElementById('collapse-all-btn').addEventListener('click', () => {
+  collections.forEach(col => collapsedCollections.add(col.id));
+  const searchTerm = document.getElementById('search-export').value.toLowerCase();
+  renderVariablesList(searchTerm);
 });
 
 document.getElementById('search-export').addEventListener('input', (e) => {
@@ -279,36 +516,65 @@ function handleJSONUpload(file) {
   reader.readAsText(file);
 }
 
+// Track collapsed state for each collection
+let collapsedCollections = new Set();
+
 function renderVariablesList(searchTerm = '') {
   const container = document.getElementById('variables-list');
   if (collections.length === 0) {
     container.innerHTML = '<div class="loading">No variable collections found</div>';
     return;
   }
+
+  // Initialize all collections as collapsed on first render
+  if (collapsedCollections.size === 0) {
+    collections.forEach(col => collapsedCollections.add(col.id));
+  }
+
   let html = '';
   collections.forEach(collection => {
     const filteredVars = collection.variables.filter(v => !searchTerm || v.name.toLowerCase().includes(searchTerm) || (v.description && v.description.toLowerCase().includes(searchTerm)));
     if (filteredVars.length === 0 && searchTerm) return;
     const foundationalVars = filteredVars.filter(v => !v.isAlias);
-    const allSelected = foundationalVars.every(v => selectedVariables.has(v.id));
-    html += '<div class="collection-group"><div class="collection-header" onclick="toggleCollection(\'' + collection.id + '\')"><input type="checkbox" class="checkbox" ' + (allSelected && foundationalVars.length > 0 ? 'checked' : '') + ' onclick="toggleCollectionSelection(event, \'' + collection.id + '\')" data-collection-id="' + collection.id + '"><span style="flex: 1;">' + collection.name + '</span><span style="color: #666; font-size: 11px;">' + foundationalVars.length + ' foundational / ' + filteredVars.length + ' total</span><span id="chevron-' + collection.id + '">▼</span></div><div id="variables-' + collection.id + '" style="display: block;">';
+    const selectedCount = foundationalVars.filter(v => selectedVariables.has(v.id)).length;
+    const allSelected = selectedCount === foundationalVars.length && foundationalVars.length > 0;
+    const isCollapsed = collapsedCollections.has(collection.id);
+    const chevron = isCollapsed ? '▶' : '▼';
+    const displayStyle = isCollapsed ? 'none' : 'block';
+
+    html += '<div class="collection-group"><div class="collection-header" onclick="toggleCollection(\'' + collection.id + '\')"><span id="chevron-' + collection.id + '" style="width: 16px; display: inline-block;">' + chevron + '</span><input type="checkbox" class="checkbox collection-checkbox" ' + (allSelected ? 'checked' : '') + ' onclick="toggleCollectionSelection(event, \'' + collection.id + '\')" data-collection-id="' + collection.id + '" data-selected-count="' + selectedCount + '" data-total-count="' + foundationalVars.length + '"><span style="flex: 1;">' + collection.name + '</span><span class="collection-counts">' + foundationalVars.length + ' foundational / ' + filteredVars.length + ' total</span></div><div id="variables-' + collection.id + '" style="display: ' + displayStyle + ';">';
     filteredVars.forEach(variable => {
       const isSelected = selectedVariables.has(variable.id);
       const isDisabled = variable.isAlias;
-      html += '<div class="variable-row ' + (isSelected ? 'selected' : '') + ' ' + (isDisabled ? 'alias' : '') + '" onclick="' + (!isDisabled ? "toggleVariableSelection('" + variable.id + "')" : '') + '"><input type="checkbox" class="checkbox" ' + (isSelected ? 'checked' : '') + ' ' + (isDisabled ? 'disabled' : '') + ' onclick="event.stopPropagation()"><div class="variable-info"><div class="variable-name">' + variable.name + (variable.isAlias ? '<span class="badge">ALIAS</span>' : '') + '</div>' + (variable.description ? '<div class="variable-desc">' + variable.description + '</div>' : '') + '</div><div class="variable-type">' + variable.resolvedType + '</div></div>';
+      html += '<div class="variable-row ' + (isSelected ? 'selected' : '') + ' ' + (isDisabled ? 'alias' : '') + '" onclick="' + (!isDisabled ? "toggleVariableSelection('" + variable.id + "')" : '') + '"><input type="checkbox" class="checkbox variable-checkbox" data-variable-id="' + variable.id + '" ' + (isSelected ? 'checked' : '') + ' ' + (isDisabled ? 'disabled' : '') + ' onclick="event.stopPropagation(); toggleVariableSelection(\'' + variable.id + '\');"><div class="variable-info"><div class="variable-name">' + variable.name + (variable.isAlias ? '<span class="badge">ALIAS</span>' : '') + '</div>' + (variable.description ? '<div class="variable-desc">' + variable.description + '</div>' : '') + '</div><div class="variable-type">' + variable.resolvedType + '</div></div>';
     });
     html += '</div></div>';
   });
   container.innerHTML = html;
+
+  // Set indeterminate state for collection checkboxes after rendering
+  collections.forEach(collection => {
+    const filteredVars = collection.variables.filter(v => !searchTerm || v.name.toLowerCase().includes(searchTerm) || (v.description && v.description.toLowerCase().includes(searchTerm)));
+    const foundationalVars = filteredVars.filter(v => !v.isAlias);
+    const selectedCount = foundationalVars.filter(v => selectedVariables.has(v.id)).length;
+    const collectionCheckbox = document.querySelector('.collection-checkbox[data-collection-id="' + collection.id + '"]');
+
+    if (collectionCheckbox && selectedCount > 0 && selectedCount < foundationalVars.length) {
+      collectionCheckbox.indeterminate = true;
+    }
+  });
 }
 
 window.toggleCollection = function(collectionId) {
   const div = document.getElementById('variables-' + collectionId);
   const chevron = document.getElementById('chevron-' + collectionId);
-  if (div.style.display === 'none') {
+
+  if (collapsedCollections.has(collectionId)) {
+    collapsedCollections.delete(collectionId);
     div.style.display = 'block';
     chevron.textContent = '▼';
   } else {
+    collapsedCollections.add(collectionId);
     div.style.display = 'none';
     chevron.textContent = '▶';
   }
@@ -318,14 +584,39 @@ window.toggleCollectionSelection = function(event, collectionId) {
   event.stopPropagation();
   const collection = collections.find(c => c.id === collectionId);
   if (!collection) return;
-  const foundationalVars = collection.variables.filter(v => !v.isAlias);
+
+  const searchTerm = document.getElementById('search-export').value.toLowerCase();
+  const filteredVars = collection.variables.filter(v => !searchTerm || v.name.toLowerCase().includes(searchTerm) || (v.description && v.description.toLowerCase().includes(searchTerm)));
+  const foundationalVars = filteredVars.filter(v => !v.isAlias);
   const allSelected = foundationalVars.every(v => selectedVariables.has(v.id));
+
   if (allSelected) {
     foundationalVars.forEach(v => selectedVariables.delete(v.id));
   } else {
     foundationalVars.forEach(v => selectedVariables.add(v.id));
   }
-  renderVariablesList();
+
+  // Update checkbox state without full re-render
+  const checkbox = event.target;
+  checkbox.checked = !allSelected;
+  checkbox.indeterminate = false;
+
+  // Update individual variable checkboxes and row styles
+  foundationalVars.forEach(v => {
+    const varCheckbox = document.querySelector('.variable-checkbox[data-variable-id="' + v.id + '"]');
+    if (varCheckbox) {
+      varCheckbox.checked = selectedVariables.has(v.id);
+      const row = varCheckbox.closest('.variable-row');
+      if (row) {
+        if (selectedVariables.has(v.id)) {
+          row.classList.add('selected');
+        } else {
+          row.classList.remove('selected');
+        }
+      }
+    }
+  });
+
   updateSelectionInfo();
 };
 
@@ -335,7 +626,46 @@ window.toggleVariableSelection = function(variableId) {
   } else {
     selectedVariables.add(variableId);
   }
-  renderVariablesList();
+
+  // Update the checkbox and row without full re-render
+  const checkbox = document.querySelector('.variable-checkbox[data-variable-id="' + variableId + '"]');
+  if (checkbox) {
+    checkbox.checked = selectedVariables.has(variableId);
+    const row = checkbox.closest('.variable-row');
+    if (row) {
+      if (selectedVariables.has(variableId)) {
+        row.classList.add('selected');
+      } else {
+        row.classList.remove('selected');
+      }
+    }
+  }
+
+  // Update collection checkbox state
+  let variable = null;
+  let collectionId = null;
+  for (const col of collections) {
+    variable = col.variables.find(v => v.id === variableId);
+    if (variable) {
+      collectionId = col.id;
+      break;
+    }
+  }
+
+  if (collectionId) {
+    const collection = collections.find(c => c.id === collectionId);
+    const searchTerm = document.getElementById('search-export').value.toLowerCase();
+    const filteredVars = collection.variables.filter(v => !searchTerm || v.name.toLowerCase().includes(searchTerm) || (v.description && v.description.toLowerCase().includes(searchTerm)));
+    const foundationalVars = filteredVars.filter(v => !v.isAlias);
+    const selectedCount = foundationalVars.filter(v => selectedVariables.has(v.id)).length;
+    const collectionCheckbox = document.querySelector('.checkbox[data-collection-id="' + collectionId + '"]');
+
+    if (collectionCheckbox) {
+      collectionCheckbox.checked = selectedCount === foundationalVars.length && foundationalVars.length > 0;
+      collectionCheckbox.indeterminate = selectedCount > 0 && selectedCount < foundationalVars.length;
+    }
+  }
+
   updateSelectionInfo();
 };
 
@@ -490,6 +820,8 @@ window.onmessage = (event) => {
     collections = msg.collections;
     renderVariablesList();
     updateSelectionInfo();
+  } else if (msg.type === 'theme-loaded') {
+    setTheme(msg.theme);
   } else if (msg.type === 'csv-export-ready') {
     downloadCSVSheets(msg.data);
   } else if (msg.type === 'json-export-ready') {

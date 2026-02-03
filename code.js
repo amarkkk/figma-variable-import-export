@@ -10,9 +10,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 figma.showUI(__html__, { width: 900, height: 650, themeColors: true });
+// Restore previous size and theme
+figma.clientStorage.getAsync('windowSize').then(size => {
+    if (size) {
+        figma.ui.resize(size.w, size.h);
+    }
+}).catch(() => { });
+figma.clientStorage.getAsync('theme').then(theme => {
+    if (theme) {
+        figma.ui.postMessage({
+            type: 'theme-loaded',
+            theme: theme
+        });
+    }
+}).catch(() => { });
 figma.ui.onmessage = (msg) => __awaiter(this, void 0, void 0, function* () {
     try {
-        if (msg.type === 'scan-collections') {
+        if (msg.type === 'resize') {
+            const minWidth = 600;
+            const minHeight = 400;
+            const maxWidth = 1600;
+            const maxHeight = 1200;
+            const width = Math.max(minWidth, Math.min(maxWidth, msg.size.w));
+            const height = Math.max(minHeight, Math.min(maxHeight, msg.size.h));
+            figma.ui.resize(width, height);
+            // Save size for next time
+            figma.clientStorage.setAsync('windowSize', { w: width, h: height });
+        }
+        else if (msg.type === 'theme-change') {
+            figma.clientStorage.setAsync('theme', msg.theme);
+        }
+        else if (msg.type === 'scan-collections') {
             yield handleScanCollections();
         }
         else if (msg.type === 'export-csv') {
