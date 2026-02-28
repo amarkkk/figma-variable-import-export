@@ -92,5 +92,5 @@ Created by [Mark Andrassy](https://github.com/amarkkk)
 | [Variable Mover](https://github.com/amarkkk/figma-variable-mover) | Move variables between collections preserving aliases |
 | [Variable Remapper](https://github.com/amarkkk/figma-variable-remapper) | Bulk find-and-replace variable bindings |
 | **Variable Import/Export** | CSV/JSON export for spreadsheet editing + re-import |
-| [Variable Descriptions](https://github.com/amarkkk/figma-variable-description-manager) | Bulk clear/update variable descriptions |
+| [Variable Description Manager](https://github.com/amarkkk/figma-variable-description-manager) | Bulk clear/update variable descriptions |
 | [Variable Network](https://github.com/amarkkk/figma-variable-network) | Visualize token alias chains and component usage |
