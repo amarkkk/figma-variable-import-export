@@ -1,7 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2017",
     "lib": ["ES2017"],
-    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
-  }
+    "module": "CommonJS",
+    "strict": true,
+    "useUnknownInCatchVariables": false,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@figma",
+      "./node_modules/@types"
+    ]
+  },
+  "include": ["code.ts"]
 }
