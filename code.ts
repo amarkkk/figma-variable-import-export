@@ -40,12 +40,56 @@ type CSVRow = {
   [modeName: string]: string;
 };
 
-figma.showUI(__html__, { width: 900, height: 650, themeColors: true });
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
+let currentWindowSize = { w: 1280, h: 720 };
+let windowSizePersistTimer: any = null;
+
+function clampWindowSize(size: any) {
+  const minWidth = 900;
+  const minHeight = 600;
+  const width = typeof size?.w === 'number' ? size.w : currentWindowSize.w;
+  const height = typeof size?.h === 'number' ? size.h : currentWindowSize.h;
+
+  return {
+    w: Math.max(minWidth, Math.round(width)),
+    h: Math.max(minHeight, Math.round(height))
+  };
+}
+
+function persistWindowSize() {
+  figma.clientStorage.setAsync('windowSize', currentWindowSize).catch(() => {});
+}
+
+function scheduleWindowSizePersist() {
+  if (windowSizePersistTimer !== null) {
+    clearTimeout(windowSizePersistTimer);
+  }
+
+  windowSizePersistTimer = setTimeout(() => {
+    windowSizePersistTimer = null;
+    persistWindowSize();
+  }, 250);
+}
+
+function persistWindowSizeNow() {
+  if (windowSizePersistTimer !== null) {
+    clearTimeout(windowSizePersistTimer);
+    windowSizePersistTimer = null;
+  }
+
+  persistWindowSize();
+}
+
+figma.showUI(__html__, { width: 1280, height: 720, themeColors: true });
 
 // Restore previous size and theme
 figma.clientStorage.getAsync('windowSize').then(size => {
   if (size) {
-    figma.ui.resize(size.w, size.h);
+    currentWindowSize = clampWindowSize(size);
+    figma.ui.resize(currentWindowSize.w, currentWindowSize.h);
   }
 }).catch(() => {});
 
@@ -61,18 +105,11 @@ figma.clientStorage.getAsync('theme').then(theme => {
 figma.ui.onmessage = async (msg) => {
   try {
     if (msg.type === 'resize') {
-      const minWidth = 600;
-      const minHeight = 400;
-      const maxWidth = 1600;
-      const maxHeight = 1200;
-
-      const width = Math.max(minWidth, Math.min(maxWidth, msg.size.w));
-      const height = Math.max(minHeight, Math.min(maxHeight, msg.size.h));
-
-      figma.ui.resize(width, height);
-
-      // Save size for next time
-      figma.clientStorage.setAsync('windowSize', { w: width, h: height });
+      currentWindowSize = clampWindowSize(msg.size);
+      figma.ui.resize(currentWindowSize.w, currentWindowSize.h);
+      scheduleWindowSizePersist();
+    } else if (msg.type === 'persist-size') {
+      persistWindowSizeNow();
     } else if (msg.type === 'theme-change') {
       figma.clientStorage.setAsync('theme', msg.theme);
     } else if (msg.type === 'scan-collections') {
@@ -93,7 +130,7 @@ figma.ui.onmessage = async (msg) => {
       figma.closePlugin();
     }
   } catch (error) {
-    figma.ui.postMessage({ type: 'error', message: error.message });
+    figma.ui.postMessage({ type: 'error', message: getErrorMessage(error) });
   }
 };
 
@@ -332,7 +369,7 @@ async function handleValidateCSVImport(csvData: string) {
 
     figma.ui.postMessage({ type: 'csv-validation-result', validation });
   } catch (error) {
-    figma.ui.postMessage({ type: 'csv-validation-result', validation: { valid: false, errors: ['Failed to parse CSV: ' + error.message], warnings: [], summary: {}, preview: [] } });
+    figma.ui.postMessage({ type: 'csv-validation-result', validation: { valid: false, errors: ['Failed to parse CSV: ' + getErrorMessage(error)], warnings: [], summary: {}, preview: [] } });
   }
 }
 
@@ -368,7 +405,7 @@ async function handleImportCSV(csvData: string) {
           try {
             variable.setValueForMode(mode.modeId, parsedValue);
           } catch (error) {
-            results.errors.push('Failed to update "' + variable.name + '": ' + error.message);
+            results.errors.push('Failed to update "' + variable.name + '": ' + getErrorMessage(error));
           }
         }
       }
@@ -378,8 +415,9 @@ async function handleImportCSV(csvData: string) {
     await createLogEntry('IMPORT_CSV', { ...results, status: results.errors.length > 0 ? 'PARTIAL_SUCCESS' : 'SUCCESS' });
     figma.ui.postMessage({ type: 'csv-import-complete', results });
   } catch (error) {
-    results.errors.push('Import failed: ' + error.message);
-    await createLogEntry('IMPORT_CSV', { ...results, status: 'FAILED', error: error.message });
+    const message = getErrorMessage(error);
+    results.errors.push('Import failed: ' + message);
+    await createLogEntry('IMPORT_CSV', { ...results, status: 'FAILED', error: message });
     figma.ui.postMessage({ type: 'csv-import-complete', results });
   }
 }
@@ -419,7 +457,7 @@ async function handleValidateJSONImport(jsonData: string) {
 
     figma.ui.postMessage({ type: 'json-validation-result', validation });
   } catch (error) {
-    figma.ui.postMessage({ type: 'json-validation-result', validation: { valid: false, errors: ['Failed to parse JSON: ' + error.message], warnings: [], summary: {}, preview: [] } });
+    figma.ui.postMessage({ type: 'json-validation-result', validation: { valid: false, errors: ['Failed to parse JSON: ' + getErrorMessage(error)], warnings: [], summary: {}, preview: [] } });
   }
 }
 
@@ -435,7 +473,7 @@ async function handleImportJSON(jsonData: string) {
           try {
             variable.setValueForMode(modeId, value);
           } catch (error) {
-            results.errors.push('Failed to update "' + importVar.name + '": ' + error.message);
+            results.errors.push('Failed to update "' + importVar.name + '": ' + getErrorMessage(error));
           }
         }
         results.variablesUpdated++;
@@ -445,8 +483,9 @@ async function handleImportJSON(jsonData: string) {
     await createLogEntry('IMPORT_JSON', { ...results, status: results.errors.length > 0 ? 'PARTIAL_SUCCESS' : 'SUCCESS' });
     figma.ui.postMessage({ type: 'json-import-complete', results });
   } catch (error) {
-    results.errors.push('Import failed: ' + error.message);
-    await createLogEntry('IMPORT_JSON', { ...results, status: 'FAILED', error: error.message });
+    const message = getErrorMessage(error);
+    results.errors.push('Import failed: ' + message);
+    await createLogEntry('IMPORT_JSON', { ...results, status: 'FAILED', error: message });
     figma.ui.postMessage({ type: 'json-import-complete', results });
   }
 }

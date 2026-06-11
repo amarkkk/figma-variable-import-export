@@ -6,37 +6,39 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Light theme (Figma native colors) */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --bg-tertiary: #f9f9f9;
-  --bg-hover: #ebebeb;
-  --bg-active: #e5e5e5;
+  --bg-primary: #feffff;
+  --bg-secondary: #f6f7f8;
+  --bg-tertiary: #e7e8e9;
+  --bg-hover: #eeeff0;
+  --bg-active: #d3d4d6;
 
-  --text-primary: #000000;
-  --text-secondary: #333333;
-  --text-tertiary: #666666;
-  --text-disabled: #999999;
+  --text-primary: #141517;
+  --text-secondary: #404345;
+  --text-tertiary: #6b6e72;
+  --text-disabled: #888b8e;
 
-  --border-strong: #ccc;
-  --border-medium: #e5e5e5;
-  --border-subtle: #f0f0f0;
+  --border-strong: #b8bbbd;
+  --border-medium: #d3d4d6;
+  --border-subtle: #e7e8e9;
 
-  --accent-primary: #0d99ff;
-  --accent-hover: #0b7fd9;
-  --accent-active: #0a6ec2;
+  --accent-primary: #be8346;
+  --accent-hover: #ac7336;
+  --accent-active: #8e5e2b;
+  --accent-text: #8e5e2b;
+  --accent-bg: #fcf6f1;
+  --accent-on-accent: #141517;
 
-  --success-bg: #d4edda;
-  --success-text: #155724;
-  --success-border: #28a745;
+  --success-bg: #f0f5f1;
+  --success-text: #3a7d5c;
+  --success-border: #c8ddd0;
 
-  --warning-bg: #fff3cd;
-  --warning-text: #856404;
-  --warning-border: #ffc107;
+  --warning-bg: #f8f3e8;
+  --warning-text: #8a6b2e;
+  --warning-border: #ddd0b0;
 
-  --error-bg: #f8d7da;
-  --error-text: #721c24;
-  --error-border: #dc3545;
+  --error-bg: #f8efee;
+  --error-text: #b53d3d;
+  --error-border: #ddc8c8;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -44,37 +46,39 @@
 }
 
 [data-theme="dark"] {
-  /* Dark theme (Figma native colors) */
-  --bg-primary: #1e1e1e;
-  --bg-secondary: #2c2c2c;
-  --bg-tertiary: #252525;
-  --bg-hover: #383838;
-  --bg-active: #444444;
+  --bg-primary: #141517;
+  --bg-secondary: #27292b;
+  --bg-tertiary: #404345;
+  --bg-hover: #333638;
+  --bg-active: #5e6164;
 
-  --text-primary: #ffffff;
-  --text-secondary: #e5e5e5;
-  --text-tertiary: #b3b3b3;
-  --text-disabled: #7a7a7a;
+  --text-primary: #feffff;
+  --text-secondary: #e7e8e9;
+  --text-tertiary: #b8bbbd;
+  --text-disabled: #7e8084;
 
-  --border-strong: #5a5a5a;
-  --border-medium: #3c3c3c;
-  --border-subtle: #2c2c2c;
+  --border-strong: #5e6164;
+  --border-medium: #404345;
+  --border-subtle: #27292b;
 
-  --accent-primary: #18a0fb;
-  --accent-hover: #3db0ff;
-  --accent-active: #0d8ce8;
+  --accent-primary: #be8346;
+  --accent-hover: #ca9663;
+  --accent-active: #ac7336;
+  --accent-text: #deb996;
+  --accent-bg: #312111;
+  --accent-on-accent: #141517;
 
-  --success-bg: #1a3d28;
-  --success-text: #4ade80;
-  --success-border: #2d5a3d;
+  --success-bg: #1a2e24;
+  --success-text: #6abf8a;
+  --success-border: #2d4a3d;
 
-  --warning-bg: #3d3520;
-  --warning-text: #fbbf24;
-  --warning-border: #92752d;
+  --warning-bg: #2e2a1e;
+  --warning-text: #d4a83a;
+  --warning-border: #4a3d2d;
 
-  --error-bg: #3d1a1a;
-  --error-text: #f87171;
-  --error-border: #5a2d2d;
+  --error-bg: #2e1e1e;
+  --error-text: #e06060;
+  --error-border: #4a2d2d;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -86,55 +90,53 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 .tabs { display: flex; border-bottom: 1px solid var(--border-medium); background: var(--bg-secondary); }
 .tab { padding: 12px 24px; cursor: pointer; border: none; background: transparent; font-size: 13px; font-weight: 500; color: var(--text-tertiary); border-bottom: 2px solid transparent; transition: all 0.2s; }
 .tab:hover { color: var(--text-primary); background: var(--bg-hover); }
-.tab.active { color: var(--text-primary); border-bottom-color: var(--accent-primary); background: var(--bg-primary); }
+.tab.active { color: var(--accent-text); border-bottom-color: var(--accent-primary); background: var(--bg-primary); }
 .tab-content { flex: 1; display: none; flex-direction: column; overflow: hidden; }
 .tab-content.active { display: flex; }
 .toolbar { padding: 12px 16px; background: var(--bg-tertiary); border-bottom: 1px solid var(--border-medium); display: flex; gap: 8px; align-items: center; }
 .search-box { flex: 1; padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 4px; font-size: 12px; background: var(--bg-primary); color: var(--text-primary); transition: all 0.2s; }
 .search-box:focus { outline: none; border-color: var(--accent-primary); }
-.btn { padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary); cursor: pointer; font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+.btn { min-height: 30px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: 3px; background: var(--bg-primary); color: var(--text-secondary); cursor: pointer; font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; white-space: nowrap; }
 .btn:hover { background: var(--bg-secondary); }
-.btn-primary { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
-.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary { background: transparent; color: var(--accent-text); border-color: var(--accent-primary); }
+.btn-primary:hover { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent-hover); }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-success { background: var(--success-border); color: white; border-color: var(--success-border); }
-.btn-success:hover { background: #218838; }
+.btn-success { background: var(--success-bg); color: var(--success-text); border-color: var(--success-border); }
+.btn-success:hover { background: var(--bg-hover); border-color: var(--success-text); }
 .table-container { flex: 1; overflow-y: auto; border-bottom: 1px solid var(--border-medium); }
 .collection-group { border-bottom: 1px solid var(--border-medium); }
 .collection-header { padding: 12px 16px; background: var(--bg-secondary); font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; color: var(--text-primary); }
 .collection-header:hover { background: var(--bg-hover); }
 .collection-header span { color: var(--text-primary); }
+.accordion-chevron { width: 16px; display: inline-block; color: var(--text-tertiary); }
+.accordion-header:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: -2px; }
 .collection-counts { color: var(--text-tertiary) !important; font-size: 11px; }
 .variable-row { padding: 10px 16px 10px 40px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.1s; }
 .variable-row:hover { background: var(--bg-tertiary); }
-.variable-row.selected { background: #e3f2ff; }
-[data-theme="dark"] .variable-row.selected { background: #1a3d4d; }
+.variable-row.selected { background: var(--accent-bg); }
 .variable-row.alias { opacity: 0.5; pointer-events: none; }
 .checkbox { width: 16px; height: 16px; cursor: pointer; }
 .variable-info { flex: 1; min-width: 0; }
 .variable-name { font-weight: 500; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; color: var(--text-primary); }
-.badge { padding: 2px 6px; background: var(--warning-border); color: var(--text-primary); border-radius: 3px; font-size: 9px; font-weight: 600; }
+.badge { padding: 2px 6px; background: transparent; color: var(--accent-text); border: 1px solid var(--accent-primary); border-radius: 10px; font-size: 9px; font-weight: 500; }
 .variable-desc { color: var(--text-tertiary); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .variable-type { padding: 2px 8px; background: var(--bg-active); border-radius: 3px; font-size: 10px; font-weight: 500; color: var(--text-tertiary); }
-.footer { padding: 12px 16px; background: var(--bg-tertiary); border-top: 1px solid var(--border-medium); display: flex; justify-content: space-between; align-items: center; }
-.selection-info { color: var(--text-tertiary); font-size: 12px; }
-.export-buttons { display: flex; gap: 8px; }
-.helper-text { color: var(--text-tertiary); font-size: 11px; padding: 8px 12px; background: #f0f9ff; border-left: 3px solid var(--accent-primary); border-radius: 3px; line-height: 1.5; }
-[data-theme="dark"] .helper-text { background: #1a2e3d; }
-.workaround-banner { background: var(--warning-bg); border-left-color: var(--warning-border); color: var(--warning-text); padding: 12px; }
-.future-feature-box { border-color: var(--border-strong) !important; }
+.footer { display: flex; justify-content: space-between; align-items: center; padding: 12px 12px; border-top: 1px solid var(--border-medium); background: var(--bg-secondary); gap: 8px; flex-shrink: 0; }
+.footer-left { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.footer-right { display: flex; align-items: center; gap: 8px; padding-right: 20px; flex-shrink: 0; }
+.footer-actions { display: flex; align-items: center; gap: 8px; }
+.footer-stats { font-size: 11px; color: var(--text-tertiary); margin-left: 4px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.selection-info { color: var(--text-tertiary); font-size: 11px; }
+.helper-text { color: var(--text-tertiary); font-size: 11px; padding: 8px 12px; background: var(--accent-bg); border-left: 3px solid var(--accent-primary); border-radius: 3px; line-height: 1.5; }
 .import-container { flex: 1; display: flex; flex-direction: column; padding: 16px; gap: 16px; overflow-y: auto; }
 .import-method { border: 2px solid var(--border-medium); border-radius: 8px; padding: 20px; transition: all 0.2s; background: var(--bg-primary); }
 .import-method.clickable { cursor: pointer; }
-.import-method.clickable:hover { border-color: var(--accent-primary); background: #f9fcff; }
-[data-theme="dark"] .import-method.clickable:hover { background: #1a2e3d; }
+.import-method.clickable:hover { border-color: var(--accent-primary); background: var(--accent-bg); }
 .import-method h3 { font-size: 14px; margin-bottom: 8px; color: var(--text-primary); }
 .import-method p { color: var(--text-tertiary); font-size: 11px; line-height: 1.5; margin-bottom: 12px; }
 .file-upload { border: 2px dashed var(--border-strong); border-radius: 8px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.2s; margin-top: 12px; background: var(--bg-primary); color: var(--text-primary); }
-.file-upload:hover { border-color: var(--accent-primary); background: #f9fcff; }
-[data-theme="dark"] .file-upload:hover { background: #1a2e3d; }
-.file-upload.drag-over { border-color: var(--accent-primary); background: #e3f2ff; }
-[data-theme="dark"] .file-upload.drag-over { background: #1a3d4d; }
+.file-upload:hover { border-color: var(--accent-primary); background: var(--accent-bg); }
+.file-upload.drag-over { border-color: var(--accent-primary); background: var(--accent-bg); }
 .alert { padding: 12px; border-radius: 6px; margin-bottom: 12px; display: flex; gap: 8px; }
 .alert-warning { background: var(--warning-bg); border: 1px solid var(--warning-border); color: var(--warning-text); }
 .alert-error { background: var(--error-bg); border: 1px solid var(--error-border); color: var(--error-text); }
@@ -147,42 +149,150 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 .preview-item { padding: 8px; margin-bottom: 8px; background: var(--bg-tertiary); border-left: 3px solid var(--accent-primary); border-radius: 3px; }
 .preview-item-header { font-weight: 600; margin-bottom: 4px; font-size: 12px; color: var(--text-primary); }
 .preview-change { font-size: 11px; color: var(--text-tertiary); margin-left: 12px; margin-top: 2px; }
-.hidden { display: none; }
+.hidden { display: none !important; }
 .loading { text-align: center; padding: 32px; color: var(--text-tertiary); }
-.future-badge { position: absolute; top: 10px; right: 10px; background: var(--warning-border); color: #000; padding: 4px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; }
-
 /* Icon button for theme toggle */
-.icon-button {
-  width: 32px;
-  height: 32px;
+.icon-btn {
+  width: 30px;
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  transition: all 0.15s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.icon-btn:active {
+  background: var(--bg-active);
+}
+
+.icon-btn svg {
+  pointer-events: none;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  white-space: nowrap;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+}
+
+.icon-btn:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-bottom { bottom: auto; top: calc(100% + 6px); }
+.tooltip-left { left: 0; transform: none; }
+.tooltip-right { left: auto; right: 0; transform: none; }
+
+.help-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  background: rgba(0, 0, 0, 0.35);
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .help-backdrop { background: rgba(0, 0, 0, 0.55); }
+.help-backdrop.hidden {
+  display: none;
+}
+
+.help-modal {
+  /* 520px is the floor (the old fixed width); grows proportionally with the
+     plugin window so wider windows get a wider, less-scrolly modal. */
+  width: clamp(520px, 58vw, 900px);
+  max-height: 84vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.help-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-medium);
+  flex-shrink: 0;
+}
+
+.help-modal-title {
+  flex: 1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.help-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.help-modal-body::-webkit-scrollbar { display: none; }
+.help-section { display: flex; flex-direction: column; gap: 8px; }
+.help-section-title { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--accent-primary); letter-spacing: 0.05em; }
+.help-para { font-size: 11px; color: var(--text-secondary); line-height: 1.6; }
+
+.dialog-close-btn {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  padding: 0;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
   color: var(--text-tertiary);
-  transition: all 0.15s ease;
+  cursor: pointer;
 }
-
-.icon-button:hover {
-  background: var(--bg-hover);
-  color: var(--text-secondary);
-}
-
-.icon-button:active {
-  background: var(--bg-active);
-}
+.dialog-close-btn:hover { background: var(--bg-hover); color: var(--text-secondary); }
 </style>
 </head>
 <body>
 <div class="container">
-<!-- Helper Text - Moved above tabs -->
-<div class="helper-text" style="margin: 12px 16px 0 16px;">
-💡 <strong>Google Sheets Workflow:</strong> Import CSVs to Google Sheets (each as a separate tab), edit values, then download and re-upload to sync. CSV files are named after collections for easy organization.
-</div>
-
 <div class="tabs">
 <button class="tab active" data-tab="export">Export Variables</button>
 <button class="tab" data-tab="import">Import Variables</button>
@@ -196,26 +306,8 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 <button class="btn" id="collapse-all-btn">Collapse All</button>
 <button class="btn" id="select-all-btn">Select All</button>
 <button class="btn" id="deselect-all-btn">Deselect All</button>
-<button class="btn" id="refresh-btn">Refresh</button>
 </div>
 <div class="table-container" id="variables-list"><div class="loading">Loading variables...</div></div>
-<div class="footer">
-<button id="theme-toggle" class="icon-button" title="Toggle theme" style="margin-right: 8px;">
-<svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
-<path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
-</svg>
-<svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" style="display: none;">
-<path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path>
-</svg>
-</button>
-<div style="flex: 1;">
-<div class="selection-info" id="selection-info">0 variables selected (0 foundational)</div>
-</div>
-<div class="export-buttons">
-<button class="btn btn-success" id="export-csv-btn" disabled>📊 Export to CSV</button>
-<button class="btn btn-primary" id="export-json-btn" disabled>📄 Export to JSON</button>
-</div>
-</div>
 </div>
 
 <!-- Import Tab -->
@@ -226,58 +318,107 @@ body { font-family: 'Inter', -apple-system, sans-serif; font-size: 12px; backgro
 
 <!-- CSV Upload Method -->
 <div class="import-method clickable">
-<h3>📊 Upload CSV File (Recommended)</h3>
+<h3>Upload CSV File</h3>
 <p>Upload a CSV file exported from this plugin or created from the template.</p>
 <div class="file-upload" id="csv-upload">
-<div style="font-size: 36px; margin-bottom: 8px;">📄</div>
 <div style="font-weight: 600; margin-bottom: 4px;">Drop CSV file here or click to browse</div>
 <input type="file" id="csv-file-input" accept=".csv" style="display: none;">
-</div>
-</div>
-
-<!-- JSON Upload Method -->
-<div class="import-method clickable" style="margin-top: 16px;">
-<h3>📋 Upload JSON File (Backup Method)</h3>
-<p>Upload a JSON file exported from this plugin with full variable data.</p>
-<div class="file-upload" id="json-upload">
-<div style="font-size: 36px; margin-bottom: 8px;">📋</div>
-<div style="font-weight: 600; margin-bottom: 4px;">Drop JSON file here or click to browse</div>
-<input type="file" id="json-file-input" accept=".json" style="display: none;">
-</div>
-</div>
-
-<!-- Future Feature: Google Sheets -->
-<div class="import-method future-feature-box" style="margin-top: 24px; opacity: 0.6; position: relative;">
-<div class="future-badge">FUTURE FEATURE</div>
-<h3>🔗 Direct Google Sheets Sync</h3>
-<p>We explored auto-syncing from Google Sheets URLs, but Google's CORS policies currently prevent this from working in Figma plugins.</p>
-<input type="text" placeholder="https://docs.google.com/spreadsheets/d/..." disabled style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-strong); border-radius: 4px; font-size: 12px; margin-bottom: 8px; background: var(--bg-secondary); cursor: not-allowed; color: var(--text-disabled);">
-<button class="btn" disabled style="cursor: not-allowed; opacity: 0.5; width: 100%;">Sync from URL (Not Available)</button>
-<div class="helper-text workaround-banner" style="margin-top: 12px;">
-💡 <strong>Have a workaround idea?</strong> We'd love to make this work! If you have suggestions for implementing direct Google Sheets sync, please reach out:<br>
-<a href="https://github.com/yourusername/variable-import-export/issues" target="_blank" style="color: var(--accent-primary); text-decoration: none;">Open a GitHub issue</a> or email us with your ideas.
 </div>
 </div>
 </div>
 
 <!-- Validation Results -->
 <div id="validation-results" class="hidden"></div>
+</div>
+</div>
 
-<!-- Import Footer -->
-<div class="footer hidden" id="import-footer" style="margin-top: auto;">
-<button id="theme-toggle-import" class="icon-button" title="Toggle theme" style="margin-right: auto;">
-<svg class="sun-icon-import" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
-<path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
-</svg>
-<svg class="moon-icon-import" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" style="display: none;">
-<path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56A104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path>
-</svg>
+<div class="footer">
+<div class="footer-left">
+<button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+<span class="tooltip">Toggle theme</span>
+<svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path></svg>
+<svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" style="display:none;"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path></svg>
 </button>
-<div style="display: flex; gap: 8px;">
+<button id="refresh-btn" class="icon-btn" aria-label="Refresh variables">
+<span class="tooltip">Refresh variables</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M222,48V96a6,6,0,0,1-6,6H168a6,6,0,0,1,0-12h33.52L183.47,72a81.51,81.51,0,0,0-57.53-24h-.46A81.5,81.5,0,0,0,68.19,71.28a6,6,0,1,1-8.38-8.58,93.38,93.38,0,0,1,65.67-26.76H126a93.45,93.45,0,0,1,66,27.53l18,18V48a6,6,0,0,1,12,0ZM187.81,184.72a81.5,81.5,0,0,1-57.29,23.34h-.46a81.51,81.51,0,0,1-57.53-24L54.48,166H88a6,6,0,0,0,0-12H40a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V174.48l18,18.05a93.45,93.45,0,0,0,66,27.53h.52a93.38,93.38,0,0,0,65.67-26.76,6,6,0,1,0-8.38-8.58Z"></path></svg>
+</button>
+<button id="reset-size-btn" class="icon-btn" aria-label="Reset window size">
+<span class="tooltip">Reset window size</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M146,104V64a6,6,0,0,1,12,0V89.51l45.76-45.75a6,6,0,0,1,8.48,8.48L166.48,98H192a6,6,0,0,1,0,12H152A6,6,0,0,1,146,104Zm-42,42H64a6,6,0,0,0,0,12H89.52L43.76,203.76a6,6,0,1,0,8.48,8.48L98,166.48V192a6,6,0,0,0,12,0V152A6,6,0,0,0,104,146Zm62.48,12H192a6,6,0,0,0,0-12H152a6,6,0,0,0-6,6v40a6,6,0,0,0,12,0V166.48l45.76,45.76a6,6,0,0,0,8.48-8.48ZM104,58a6,6,0,0,0-6,6V89.51L52.24,43.76a6,6,0,0,0-8.48,8.48L89.52,98H64a6,6,0,0,0,0,12h40a6,6,0,0,0,6-6V64A6,6,0,0,0,104,58Z"></path></svg>
+</button>
+<button id="btn-help" class="icon-btn" aria-label="Help">
+<span class="tooltip">Help</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180Zm-12-108c-24.26,0-44,17.94-44,40v4a8,8,0,0,0,16,0v-4c0-13.23,12.56-24,28-24s28,10.77,28,24-12.56,24-28,24a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72C158.18,148.8,176,134.44,176,112,176,89.94,156.26,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+</button>
+<button id="btn-about" class="icon-btn" aria-label="About">
+<span class="tooltip">About</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm0,192a90,90,0,1,1,90-90A90.1,90.1,0,0,1,128,218Zm-8-74V112a8,8,0,0,1,16,0v32a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM116,80a12,12,0,1,1,12,12A12,12,0,0,1,116,80Z"></path></svg>
+</button>
+<span class="footer-stats selection-info" id="selection-info">0 variables selected (0 foundational)</span>
+</div>
+<div class="footer-right">
+<div class="footer-actions" id="export-actions">
+<button class="btn btn-success" id="export-csv-btn" disabled>Export CSV</button>
+</div>
+<div class="footer-actions hidden" id="import-actions">
 <button class="btn" id="cancel-import-btn">Cancel</button>
 <button class="btn btn-primary" id="confirm-import-btn">Confirm Import</button>
 </div>
 </div>
+</div>
+</div>
+
+<div id="info-backdrop" class="help-backdrop hidden">
+<div class="help-modal" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-title" tabindex="-1">
+<div class="help-modal-header">
+<span class="help-modal-title" id="info-title">Help</span>
+<button id="btn-info-close" class="dialog-close-btn" aria-label="Close dialog">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+</button>
+</div>
+<div id="help-modal-body" class="help-modal-body">
+<section class="help-section">
+<div class="help-section-title">What this plugin does</div>
+<p class="help-para">Export variable collections to CSV files for bulk editing in a spreadsheet, then import the edited CSV back to update variable values in your Figma file.</p>
+</section>
+<section class="help-section">
+<div class="help-section-title">Before you start</div>
+<p class="help-para">Only foundational (non-alias) variables can be exported and imported. Alias variables are shown in the list for context but cannot be selected — they are skipped in the CSV workflow.</p>
+</section>
+<section class="help-section">
+<div class="help-section-title">How to use it</div>
+<p class="help-para">To export:</p>
+<p class="help-para">1. On the Export tab, use the search and collection headers to find the variables you want. Check individual rows or use the collection-level checkbox to select all foundational variables in a group.</p>
+<p class="help-para">2. Click Export CSV. A download dialog appears with one CSV file per collection. Download each file.</p>
+<p class="help-para">3. Open the CSV in your spreadsheet tool, edit the value columns, then save the file.</p>
+<p class="help-para">To import:</p>
+<p class="help-para">4. Switch to the Import tab and drop or click to upload your edited CSV file.</p>
+<p class="help-para">5. The plugin validates the file and shows a preview: which variables will be updated, which were not found, and which modes are present.</p>
+<p class="help-para">6. Review the preview, then click Confirm Import to apply the changes.</p>
+</section>
+<section class="help-section">
+<div class="help-section-title">Understanding the output</div>
+<p class="help-para">Each exported CSV contains the variable name, collection, type, and one column per mode. Rows with errors or unrecognised variable names are reported in the validation step and skipped during import.</p>
+</section>
+</div>
+<div id="about-modal-body" class="help-modal-body hidden">
+<section class="help-section">
+<div class="help-section-title">About</div>
+<p class="help-para">Variable Import/Export — export variable collections to CSV for spreadsheet editing, then import the edited file back into Figma.</p>
+</section>
+<section class="help-section">
+<div class="help-section-title">Version</div>
+<p class="help-para">1.0.0</p>
+</section>
+<section class="help-section">
+<div class="help-section-title">Scope</div>
+<p class="help-para">CSV export and import of foundational variables in the current Figma file. One CSV file is generated per collection on export.</p>
+</section>
+<section class="help-section">
+<div class="help-section-title">Network</div>
+<p class="help-para">No external network access is requested by the plugin manifest.</p>
+</section>
 </div>
 </div>
 </div>
@@ -290,7 +431,7 @@ width="16"
 height="16"
 fill="currentColor"
 viewBox="0 0 256 256"
-style="position: absolute; right: 4px; bottom: 4px; cursor: nwse-resize; z-index: 10000; opacity: 0.4; color: var(--text-tertiary);">
+style="position: absolute; right: 4px; bottom: 4px; cursor: nwse-resize; touch-action: none; user-select: none; z-index: 10000; opacity: 0.4; color: var(--text-tertiary);">
 <path d="M213.66,133.66l-80,80a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,11.32Zm-16-99.32a8,8,0,0,0-11.32,0l-152,152a8,8,0,0,0,11.32,11.32l152-152A8,8,0,0,0,197.66,34.34Z"></path>
 </svg>
 
@@ -299,7 +440,9 @@ let collections = [];
 let selectedVariables = new Set();
 let importData = null;
 let importType = null;
+let importReady = false;
 let currentTheme = 'light';
+let lastInfoTrigger = null;
 
 // Theme management
 function setTheme(theme) {
@@ -308,19 +451,13 @@ function setTheme(theme) {
 
   const sunIcon = document.getElementById('sun-icon');
   const moonIcon = document.getElementById('moon-icon');
-  const sunIconImport = document.querySelector('.sun-icon-import');
-  const moonIconImport = document.querySelector('.moon-icon-import');
 
   if (theme === 'dark') {
     if (sunIcon) sunIcon.style.display = 'none';
     if (moonIcon) moonIcon.style.display = 'block';
-    if (sunIconImport) sunIconImport.style.display = 'none';
-    if (moonIconImport) moonIconImport.style.display = 'block';
   } else {
     if (sunIcon) sunIcon.style.display = 'block';
     if (moonIcon) moonIcon.style.display = 'none';
-    if (sunIconImport) sunIconImport.style.display = 'block';
-    if (moonIconImport) moonIconImport.style.display = 'none';
   }
 
   // Save theme preference
@@ -341,47 +478,181 @@ function setupResizeHandle() {
   const corner = document.getElementById('resize-corner');
   if (!corner) return;
 
-  const resizeWindow = (e) => {
-    const size = {
-      w: Math.max(600, Math.floor(e.clientX + 5)),
-      h: Math.max(400, Math.floor(e.clientY + 5))
+  const MIN_RESIZE_WIDTH = 900;
+  const MIN_RESIZE_HEIGHT = 600;
+  const RESIZE_DRAG_THRESHOLD = 2;
+  let isResizing = false;
+  let activeResizePointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let startW = 0;
+  let startH = 0;
+  let hasResizeDrag = false;
+  let queuedResizeFrame = null;
+  let queuedResizeSize = null;
+  let lastResizeSize = null;
+
+  function clampResizeSize(w, h) {
+    return {
+      w: Math.round(Math.max(MIN_RESIZE_WIDTH, w)),
+      h: Math.round(Math.max(MIN_RESIZE_HEIGHT, h)),
     };
-    parent.postMessage({
-      pluginMessage: {
-        type: 'resize',
-        size: size
+  }
+
+  function postResizeSize(size) {
+    parent.postMessage({ pluginMessage: { type: 'resize', size } }, '*');
+  }
+
+  function queueResize(size) {
+    lastResizeSize = size;
+    queuedResizeSize = size;
+    if (queuedResizeFrame !== null) return;
+
+    queuedResizeFrame = requestAnimationFrame(() => {
+      queuedResizeFrame = null;
+      if (!queuedResizeSize) return;
+      const nextSize = queuedResizeSize;
+      queuedResizeSize = null;
+      postResizeSize(nextSize);
+    });
+  }
+
+  function endResize(shouldPersist = true) {
+    if (!isResizing) return;
+
+    if (queuedResizeFrame !== null) {
+      cancelAnimationFrame(queuedResizeFrame);
+      queuedResizeFrame = null;
+      queuedResizeSize = null;
+    }
+
+    if (hasResizeDrag && lastResizeSize) {
+      postResizeSize(lastResizeSize);
+      if (shouldPersist) {
+        parent.postMessage({ pluginMessage: { type: 'persist-size' } }, '*');
       }
-    }, '*');
-  };
+    }
 
-  const handlePointerDown = (e) => {
-    corner.onpointermove = resizeWindow;
-    corner.setPointerCapture(e.pointerId);
-  };
+    const pointerIdToRelease = activeResizePointerId;
+    isResizing = false;
+    activeResizePointerId = null;
+    hasResizeDrag = false;
+    lastResizeSize = null;
 
-  const handlePointerUp = (e) => {
-    corner.onpointermove = null;
-    corner.releasePointerCapture(e.pointerId);
-  };
+    if (
+      pointerIdToRelease !== null &&
+      corner.hasPointerCapture &&
+      corner.hasPointerCapture(pointerIdToRelease)
+    ) {
+      try {
+        corner.releasePointerCapture(pointerIdToRelease);
+      } catch (_) {}
+    }
+  }
 
-  corner.addEventListener('pointerdown', handlePointerDown);
-  corner.addEventListener('pointerup', handlePointerUp);
+  corner.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    isResizing = true;
+    activeResizePointerId = e.pointerId;
+    hasResizeDrag = false;
+    lastResizeSize = null;
+    startX = e.screenX; startY = e.screenY;
+    startW = window.innerWidth; startH = window.innerHeight;
+    try {
+      corner.setPointerCapture(e.pointerId);
+    } catch (_) {}
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  function handleResizeMove(e) {
+    if (!isResizing || e.pointerId !== activeResizePointerId) return;
+    if ((e.buttons & 1) !== 1) {
+      endResize(true);
+      return;
+    }
+
+    const dx = e.screenX - startX;
+    const dy = e.screenY - startY;
+    if (!hasResizeDrag && Math.abs(dx) < RESIZE_DRAG_THRESHOLD && Math.abs(dy) < RESIZE_DRAG_THRESHOLD) {
+      return;
+    }
+
+    hasResizeDrag = true;
+    queueResize(clampResizeSize(startW + dx, startH + dy));
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function handleResizeEnd(e) {
+    if (e.pointerId !== activeResizePointerId) return;
+    endResize(true);
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  corner.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  document.addEventListener('pointermove', handleResizeMove, true);
+  document.addEventListener('pointerup', handleResizeEnd, true);
+  window.addEventListener('pointerup', handleResizeEnd, true);
+  document.addEventListener('mouseup', () => endResize(true), true);
+  window.addEventListener('blur', () => endResize(true));
 }
 
 // Initialize theme toggle and resize
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
-  const themeToggleImport = document.getElementById('theme-toggle-import');
 
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
   }
-  if (themeToggleImport) {
-    themeToggleImport.addEventListener('click', toggleTheme);
-  }
 
   setupResizeHandle();
 });
+
+function resetWindowSize() {
+  parent.postMessage({
+    pluginMessage: {
+      type: 'resize',
+      size: { w: 1280, h: 720 }
+    }
+  }, '*');
+  parent.postMessage({ pluginMessage: { type: 'persist-size' } }, '*');
+}
+
+function updateFooterActions(activeTab) {
+  const exportActions = document.getElementById('export-actions');
+  const importActions = document.getElementById('import-actions');
+
+  exportActions.classList.toggle('hidden', activeTab !== 'export');
+  importActions.classList.toggle('hidden', activeTab !== 'import' || !importReady);
+}
+
+function openInfoDialog(kind, trigger) {
+  const backdrop = document.getElementById('info-backdrop');
+  const modal = document.getElementById('info-modal');
+  const title = document.getElementById('info-title');
+  const helpBody = document.getElementById('help-modal-body');
+  const aboutBody = document.getElementById('about-modal-body');
+
+  const isAbout = kind === 'about';
+  title.textContent = isAbout ? 'About' : 'Help';
+  helpBody.classList.toggle('hidden', isAbout);
+  aboutBody.classList.toggle('hidden', !isAbout);
+  lastInfoTrigger = trigger || document.activeElement;
+  backdrop.classList.remove('hidden');
+  modal.focus();
+}
+
+function closeInfoDialog() {
+  document.getElementById('info-backdrop').classList.add('hidden');
+  if (lastInfoTrigger && typeof lastInfoTrigger.focus === 'function') {
+    lastInfoTrigger.focus();
+  }
+}
 
 // Tab switching
 document.querySelectorAll('.tab').forEach(tab => {
@@ -390,6 +661,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById(tab.dataset.tab + '-tab').classList.add('active');
+    updateFooterActions(tab.dataset.tab);
     if (tab.dataset.tab === 'export') {
       parent.postMessage({ pluginMessage: { type: 'scan-collections' } }, '*');
     }
@@ -400,6 +672,39 @@ parent.postMessage({ pluginMessage: { type: 'scan-collections' } }, '*');
 
 document.getElementById('refresh-btn').addEventListener('click', () => {
   parent.postMessage({ pluginMessage: { type: 'scan-collections' } }, '*');
+});
+
+document.getElementById('reset-size-btn').addEventListener('click', resetWindowSize);
+document.getElementById('btn-help').addEventListener('click', (event) => openInfoDialog('help', event.currentTarget));
+document.getElementById('btn-about').addEventListener('click', (event) => openInfoDialog('about', event.currentTarget));
+document.getElementById('btn-info-close').addEventListener('click', closeInfoDialog);
+document.getElementById('info-backdrop').addEventListener('click', (event) => {
+  const modal = document.getElementById('info-modal');
+  if (!modal.contains(event.target)) closeInfoDialog();
+});
+document.addEventListener('keydown', (event) => {
+  const backdrop = document.getElementById('info-backdrop');
+  if (backdrop.classList.contains('hidden')) return;
+  if (event.key === 'Escape') {
+    closeInfoDialog();
+    return;
+  }
+  if (event.key !== 'Tab') return;
+
+  const modal = document.getElementById('info-modal');
+  const focusable = Array.from(modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+    .filter(el => !el.disabled && el.offsetParent !== null);
+  if (focusable.length === 0) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
 });
 
 document.getElementById('select-all-btn').addEventListener('click', () => {
@@ -437,11 +742,6 @@ document.getElementById('export-csv-btn').addEventListener('click', () => {
   parent.postMessage({ pluginMessage: { type: 'export-csv', collectionIds, variableIds: Array.from(selectedVariables) } }, '*');
 });
 
-document.getElementById('export-json-btn').addEventListener('click', () => {
-  const collectionIds = [...new Set(collections.filter(c => c.variables.some(v => selectedVariables.has(v.id))).map(c => c.id))];
-  parent.postMessage({ pluginMessage: { type: 'export-json', collectionIds, variableIds: Array.from(selectedVariables) } }, '*');
-});
-
 // CSV upload
 const csvUpload = document.getElementById('csv-upload');
 const csvFileInput = document.getElementById('csv-file-input');
@@ -462,32 +762,12 @@ csvUpload.addEventListener('drop', (e) => {
   }
 });
 
-// JSON upload
-const jsonUpload = document.getElementById('json-upload');
-const jsonFileInput = document.getElementById('json-file-input');
-jsonUpload.addEventListener('click', () => jsonFileInput.click());
-jsonFileInput.addEventListener('change', (e) => {
-  if (e.target.files[0]) handleJSONUpload(e.target.files[0]);
-});
-jsonUpload.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  jsonUpload.classList.add('drag-over');
-});
-jsonUpload.addEventListener('dragleave', () => jsonUpload.classList.remove('drag-over'));
-jsonUpload.addEventListener('drop', (e) => {
-  e.preventDefault();
-  jsonUpload.classList.remove('drag-over');
-  if (e.dataTransfer.files[0]?.name.endsWith('.json')) {
-    handleJSONUpload(e.dataTransfer.files[0]);
-  }
-});
-
 document.getElementById('cancel-import-btn').addEventListener('click', resetImportState);
 document.getElementById('confirm-import-btn').addEventListener('click', () => {
-  if (importData && importType) {
+  if (importData && importType === 'csv') {
     parent.postMessage({ pluginMessage: { 
-      type: importType === 'csv' ? 'import-csv' : 'import-json',
-      [importType === 'csv' ? 'csvData' : 'jsonData']: importData
+      type: 'import-csv',
+      csvData: importData
     } }, '*');
   }
 });
@@ -498,18 +778,6 @@ function handleCSVUpload(file) {
     importData = e.target.result;
     importType = 'csv';
     parent.postMessage({ pluginMessage: { type: 'validate-csv-import', csvData: importData } }, '*');
-    hideImportMethods();
-    showValidationLoading();
-  };
-  reader.readAsText(file);
-}
-
-function handleJSONUpload(file) {
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    importData = e.target.result;
-    importType = 'json';
-    parent.postMessage({ pluginMessage: { type: 'validate-json-import', jsonData: importData } }, '*');
     hideImportMethods();
     showValidationLoading();
   };
@@ -542,7 +810,7 @@ function renderVariablesList(searchTerm = '') {
     const chevron = isCollapsed ? '▶' : '▼';
     const displayStyle = isCollapsed ? 'none' : 'block';
 
-    html += '<div class="collection-group"><div class="collection-header" onclick="toggleCollection(\'' + collection.id + '\')"><span id="chevron-' + collection.id + '" style="width: 16px; display: inline-block;">' + chevron + '</span><input type="checkbox" class="checkbox collection-checkbox" ' + (allSelected ? 'checked' : '') + ' onclick="toggleCollectionSelection(event, \'' + collection.id + '\')" data-collection-id="' + collection.id + '" data-selected-count="' + selectedCount + '" data-total-count="' + foundationalVars.length + '"><span style="flex: 1;">' + collection.name + '</span><span class="collection-counts">' + foundationalVars.length + ' foundational / ' + filteredVars.length + ' total</span></div><div id="variables-' + collection.id + '" style="display: ' + displayStyle + ';">';
+    html += '<div class="collection-group accordion ' + (isCollapsed ? 'collapsed' : '') + '"><div class="collection-header accordion-header" role="button" tabindex="0" aria-expanded="' + (!isCollapsed) + '" aria-controls="variables-' + collection.id + '" onclick="toggleCollection(\'' + collection.id + '\')" onkeydown="handleCollectionKeydown(event, \'' + collection.id + '\')"><span id="chevron-' + collection.id + '" class="accordion-chevron">' + chevron + '</span><input type="checkbox" class="checkbox collection-checkbox" ' + (allSelected ? 'checked' : '') + ' onclick="toggleCollectionSelection(event, \'' + collection.id + '\')" data-collection-id="' + collection.id + '" data-selected-count="' + selectedCount + '" data-total-count="' + foundationalVars.length + '"><span style="flex: 1;">' + collection.name + '</span><span class="collection-counts badge badge--dim">' + foundationalVars.length + ' foundational / ' + filteredVars.length + ' total</span></div><div id="variables-' + collection.id + '" class="accordion-body" style="display: ' + displayStyle + ';">';
     filteredVars.forEach(variable => {
       const isSelected = selectedVariables.has(variable.id);
       const isDisabled = variable.isAlias;
@@ -568,15 +836,28 @@ function renderVariablesList(searchTerm = '') {
 window.toggleCollection = function(collectionId) {
   const div = document.getElementById('variables-' + collectionId);
   const chevron = document.getElementById('chevron-' + collectionId);
+  const header = chevron ? chevron.closest('.accordion-header') : null;
+  const group = chevron ? chevron.closest('.accordion') : null;
 
   if (collapsedCollections.has(collectionId)) {
     collapsedCollections.delete(collectionId);
     div.style.display = 'block';
     chevron.textContent = '▼';
+    if (header) header.setAttribute('aria-expanded', 'true');
+    if (group) group.classList.remove('collapsed');
   } else {
     collapsedCollections.add(collectionId);
     div.style.display = 'none';
     chevron.textContent = '▶';
+    if (header) header.setAttribute('aria-expanded', 'false');
+    if (group) group.classList.add('collapsed');
+  }
+};
+
+window.handleCollectionKeydown = function(event, collectionId) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    toggleCollection(collectionId);
   }
 };
 
@@ -680,7 +961,6 @@ function updateSelectionInfo() {
   }).length;
   document.getElementById('selection-info').textContent = count + ' variable' + (count !== 1 ? 's' : '') + ' selected (' + foundationalCount + ' foundational)';
   document.getElementById('export-csv-btn').disabled = foundationalCount === 0;
-  document.getElementById('export-json-btn').disabled = foundationalCount === 0;
 }
 
 function hideImportMethods() {
@@ -696,12 +976,13 @@ function showValidationLoading() {
 function resetImportState() {
   importData = null;
   importType = null;
+  importReady = false;
   document.getElementById('import-methods').style.display = 'block';
   document.getElementById('validation-results').classList.add('hidden');
   document.getElementById('validation-results').innerHTML = '';
-  document.getElementById('import-footer').classList.add('hidden');
+  document.getElementById('import-actions').classList.add('hidden');
   csvFileInput.value = '';
-  jsonFileInput.value = '';
+  updateFooterActions(document.querySelector('.tab.active').dataset.tab);
 }
 
 // NEW: Show download modal with visible download links
@@ -713,18 +994,18 @@ function showDownloadModal(downloads) {
   
   // Create modal content
   const content = document.createElement('div');
-  content.style.cssText = 'background: white; padding: 24px; border-radius: 8px; max-width: 500px; width: 90%;';
+  content.style.cssText = 'background: var(--bg-primary); color: var(--text-primary); padding: 24px; border: 1px solid var(--border-medium); border-radius: 6px; max-width: 500px; width: 90%; box-shadow: var(--shadow-lg);';
   
-  let html = '<h2 style="margin-bottom: 16px; font-size: 18px;">📥 Export Ready</h2>';
-  html += '<p style="margin-bottom: 16px; color: #666;">Click on the links below to download your files:</p>';
+  let html = '<h2 style="margin-bottom: 16px; font-size: 18px;">Export Ready</h2>';
+  html += '<p style="margin-bottom: 16px; color: var(--text-tertiary);">Click on the links below to download your files:</p>';
   html += '<div style="display: flex; flex-direction: column; gap: 12px;">';
   
   downloads.forEach(d => {
-    html += '<a href="' + d.url + '" download="' + d.filename + '" style="display: block; padding: 12px 16px; background: #0d99ff; color: white; text-decoration: none; border-radius: 6px; text-align: center; font-weight: 500;">📄 Download ' + d.filename + '</a>';
+    html += '<a href="' + d.url + '" download="' + d.filename + '" style="display: block; padding: 12px 16px; background: transparent; color: var(--accent-text); border: 1px solid var(--accent-primary); text-decoration: none; border-radius: 4px; text-align: center; font-weight: 500;">Download ' + d.filename + '</a>';
   });
   
   html += '</div>';
-  html += '<button onclick="closeDownloadModal()" style="margin-top: 16px; width: 100%; padding: 10px; background: #f5f5f5; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Close</button>';
+  html += '<button onclick="closeDownloadModal()" class="btn" style="margin-top: 16px; width: 100%;">Close</button>';
   
   content.innerHTML = html;
   modal.appendChild(content);
@@ -761,24 +1042,6 @@ function downloadCSVSheets(data) {
   showDownloadModal(downloads);
 }
 
-// UPDATED: JSON export handler
-// Update the window.onmessage handler for json-export-ready:
-// Replace this line:
-//   downloadFile(msg.data, 'figma-variables-' + new Date().toISOString().split('T')[0] + '.json', 'application/json');
-// With:
-function handleJSONExport(jsonData) {
-  const blob = new Blob([jsonData], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const filename = 'figma-variables-' + new Date().toISOString().split('T')[0] + '.json';
-  
-  showDownloadModal([{ url: url, filename: filename }]);
-}
-
-// Then in your window.onmessage, change:
-// } else if (msg.type === 'json-export-ready') {
-//   handleJSONExport(msg.data);
-// }
-
 function convertToCSV(data) {
   if (data.length === 0) return '';
   const headers = Object.keys(data[0]);
@@ -788,30 +1051,6 @@ function convertToCSV(data) {
     csvRows.push(values.join(','));
   });
   return csvRows.join('\n');
-}
-
-function downloadFile(content, filename, mimeType) {
-  try {
-    const blob = new Blob([content], { type: mimeType });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.style.display = 'none';
-    
-    // Critical for Mac: Must append to DOM before clicking
-    document.body.appendChild(a);
-    a.click();
-    
-    // Delay cleanup to ensure download starts
-    setTimeout(() => {
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }, 100);
-  } catch (error) {
-    console.error('Download failed:', error);
-    alert('Download failed. Error: ' + error.message);
-  }
 }
 
 window.onmessage = (event) => {
@@ -824,16 +1063,10 @@ window.onmessage = (event) => {
     setTheme(msg.theme);
   } else if (msg.type === 'csv-export-ready') {
     downloadCSVSheets(msg.data);
-  } else if (msg.type === 'json-export-ready') {
-    handleJSONExport(msg.data);
   } else if (msg.type === 'csv-validation-result') {
     renderCSVValidation(msg.validation);
-  } else if (msg.type === 'json-validation-result') {
-    renderJSONValidation(msg.validation);
   } else if (msg.type === 'csv-import-complete') {
     renderImportResults(msg.results, 'CSV');
-  } else if (msg.type === 'json-import-complete') {
-    renderImportResults(msg.results, 'JSON');
   } else if (msg.type === 'error') {
     alert('Error: ' + msg.message);
   }
@@ -859,50 +1092,15 @@ function renderCSVValidation(v) {
     h += '<div class="validation-item"><span>Modes found:</span><strong>' + v.summary.modesFound.join(', ') + '</strong></div>';
     h += '</div>';
     if (v.preview?.length > 0) {
+      importReady = true;
       h += '<h3 style="margin: 16px 0 8px 0; font-size: 14px;">Changes Preview:</h3><div class="preview-list">';
       v.preview.forEach(item => {
         h += '<div class="preview-item"><div class="preview-item-header">' + item.collectionName + ' / ' + item.variableName + '</div>';
-        item.changes.forEach(change => h += '<div class="preview-change">• ' + change + '</div>');
+        item.changes.forEach(change => h += '<div class="preview-change">- ' + change + '</div>');
         h += '</div>';
       });
       h += '</div>';
-      document.getElementById('import-footer').classList.remove('hidden');
-    }
-  }
-  if (!v.valid) {
-    h += '<div class="alert alert-error">Import validation failed. Please fix the errors above.</div>';
-    h += '<button class="btn" onclick="resetImportState()" style="margin-top: 12px;">Back</button>';
-  }
-  c.innerHTML = h;
-}
-
-function renderJSONValidation(v) {
-  const c = document.getElementById('validation-results');
-  let h = '';
-  if (v.errors?.length > 0) {
-    h += '<div class="alert alert-error"><div style="flex: 1;"><strong>Errors:</strong><ul style="margin: 8px 0 0 20px;">';
-    v.errors.forEach(e => h += '<li>' + e + '</li>');
-    h += '</ul></div></div>';
-  }
-  if (v.warnings?.length > 0) {
-    h += '<div class="alert alert-warning"><div style="flex: 1;"><strong>Warnings:</strong><ul style="margin: 8px 0 0 20px;">';
-    v.warnings.forEach(w => h += '<li>' + w + '</li>');
-    h += '</ul></div></div>';
-  }
-  if (v.valid && v.summary) {
-    h += '<div class="validation-summary"><h3>Import Summary</h3>';
-    h += '<div class="validation-item"><span>Variables to update:</span><strong>' + v.summary.variablesToUpdate + '</strong></div>';
-    h += '<div class="validation-item"><span>Variables not found:</span><strong>' + v.summary.variablesNotFound + '</strong></div>';
-    h += '</div>';
-    if (v.preview?.length > 0) {
-      h += '<h3 style="margin: 16px 0 8px 0; font-size: 14px;">Changes Preview:</h3><div class="preview-list">';
-      v.preview.forEach(item => {
-        h += '<div class="preview-item"><div class="preview-item-header">' + item.collectionName + ' / ' + item.variableName + '</div>';
-        item.changes.forEach(change => h += '<div class="preview-change">• ' + change + '</div>');
-        h += '</div>';
-      });
-      h += '</div>';
-      document.getElementById('import-footer').classList.remove('hidden');
+      updateFooterActions(document.querySelector('.tab.active').dataset.tab);
     }
   }
   if (!v.valid) {
@@ -913,6 +1111,7 @@ function renderJSONValidation(v) {
 }
 
 function renderImportResults(r, type) {
+  importReady = false;
   const c = document.getElementById('validation-results');
   let h = '';
   if (r.errors?.length > 0) {
@@ -923,11 +1122,11 @@ function renderImportResults(r, type) {
   h += '<div class="alert alert-success"><div style="flex: 1;"><strong>' + type + ' import completed!</strong>';
   h += '<ul style="margin: 8px 0 0 20px;"><li>Variables updated: ' + r.variablesUpdated + '</li>';
   h += '<li>Variables skipped: ' + r.variablesSkipped + '</li></ul>';
-  h += '<div style="margin-top: 12px;">Check the "📋 Variable Export/Import Logs" page for detailed logs.</div>';
+  h += '<div style="margin-top: 12px;">Check the "Variable Export/Import Logs" page for detailed logs.</div>';
   h += '</div></div>';
   h += '<button class="btn btn-primary" onclick="resetImportState()" style="margin-top: 16px;">Import Another File</button>';
   c.innerHTML = h;
-  document.getElementById('import-footer').classList.add('hidden');
+  document.getElementById('import-actions').classList.add('hidden');
   parent.postMessage({ pluginMessage: { type: 'scan-collections' } }, '*');
 }
 

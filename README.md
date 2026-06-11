@@ -9,7 +9,6 @@
 ## Features
 
 - **CSV Export** - Spreadsheet-friendly format for bulk calculations
-- **JSON Export** - Complete variable data with full metadata for backup or programmatic editing
 - **Multi-Mode Support** - All modes appear as separate columns in CSV
 - **Selective Export** - Choose specific collections and variables to export
 - **Validation Before Import** - Preview exactly what will change before applying
@@ -35,8 +34,8 @@
 
 1. Open the plugin from **Plugins → Development → Variable Import/Export**
 2. Select collections and variables to export
-3. Choose **CSV** (for spreadsheets) or **JSON** (for backup/programmatic editing)
-4. Download the file
+3. Export CSV for spreadsheet editing
+4. Download the generated CSV files
 
 ### Editing in Spreadsheets
 
@@ -52,7 +51,7 @@
 ### Importing Updated Values
 
 1. Switch to Import mode in the plugin
-2. Upload your edited CSV or JSON file
+2. Upload your edited CSV file
 3. Review the preview - the plugin shows exactly what will change
 4. Click Import to apply changes
 
@@ -68,7 +67,7 @@
 - **Mode structure must match** - Import file must have the same modes as your collections
 - **Font loading errors** - Updating font-size variables applied to text with custom fonts may fail with "unloaded font" errors
 - **Formulas are not preserved** - Downloaded CSV contains raw values only
-- **Fixed window size** - Plugin window is not resizable
+- **JSON and direct Google Sheets sync are not exposed** - These remain backlog items until they are reliable enough for the product interface
 
 ## Changelog
 
@@ -91,6 +90,6 @@ Created by [Mark Andrassy](https://github.com/amarkkk)
 | [Variable to CSS](https://github.com/amarkkk/figma-variable-to-css) | Export variables to fluid CSS with clamp() scaling |
 | [Variable Mover](https://github.com/amarkkk/figma-variable-mover) | Move variables between collections preserving aliases |
 | [Variable Remapper](https://github.com/amarkkk/figma-variable-remapper) | Bulk find-and-replace variable bindings |
-| **Variable Import/Export** | CSV/JSON export for spreadsheet editing + re-import |
+| **Variable Import/Export** | CSV export/import for spreadsheet editing |
 | [Variable Description Manager](https://github.com/amarkkk/figma-variable-description-manager) | Bulk clear/update variable descriptions |
 | [Variable Network](https://github.com/amarkkk/figma-variable-network) | Visualize token alias chains and component usage |

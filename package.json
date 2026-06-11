@@ -1,7 +1,7 @@
 {
   "name": "figma-variable-import-export",
   "version": "1.0.0",
-  "description": "Export Figma variables to CSV/JSON for bulk editing in spreadsheets, then import back",
+  "description": "Export Figma variables to CSV for bulk editing in spreadsheets, then import back",
   "author": "Mark Andrassy",
   "license": "MIT",
   "scripts": {

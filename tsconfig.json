@@ -4,7 +4,6 @@
     "lib": ["ES2017"],
     "module": "CommonJS",
     "strict": true,
-    "useUnknownInCatchVariables": false,
     "skipLibCheck": true,
     "typeRoots": [
       "./node_modules/@figma",
